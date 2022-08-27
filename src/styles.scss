@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @font-face {
   font-family: "Helvetica Neue";
   src: url("/assets/fonts/HelveticaNeue.ttc");
@@ -9,4 +11,14 @@
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Helvetica Neue", serif;
+  outline: none;
+  border-style: none;
 }
+
+.container{
+  max-width: 900px;
+  margin: auto;
+}
+
+
+

@@ -1,0 +1,18 @@
+@import "colors";
+
+@mixin input{
+  background-color: $blue;
+  border-radius: 8px;
+  font-size: 20px;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: 1s;
+  cursor: pointer;
+  &:hover{
+    background-color: $blue3;
+    transition: 1s;
+  }
+}

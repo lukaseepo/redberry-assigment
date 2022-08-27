@@ -1,0 +1,75 @@
+<section class="form-section">
+  <div class="form-items">
+    <div class="tabs">
+      <div class="tab">
+        <a href="">თანამშრომლების ინფო</a>
+        <div class="line"></div>
+      </div>
+      <div class="tab">
+        <a href="">ლეპტოპის მახასიათებლები</a>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="form-item">
+      <div class="container">
+        <form>
+            <div class="input-fields">
+              <div class="input-field">
+                <label>სახელი</label>
+                <input type="text">
+                <span>მინიმუმ 2 სიმბოლო ქართული ასოები</span>
+              </div>
+              <div class="input-field">
+                <label>გვარი</label>
+                <input type="text">
+                <span>მინიმუმ 2 სიმბოლო ქართული ასოები</span>
+              </div>
+            </div>
+            <div class="select-wrapper">
+              <i class="fa-solid fa-angle-down"></i>
+              <mat-form-field appearance="fill">
+                <mat-label>თიმი</mat-label>
+                <mat-select disableOptionCentering >
+                  <mat-option *ngFor="let team of teams.data" [value]="team.id">
+                    {{team.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="select-wrapper">
+              <i class="fa-solid fa-angle-down"></i>
+              <mat-form-field appearance="fill">
+                <mat-label>პოზიცია</mat-label>
+                <mat-select disableOptionCentering>
+                  <mat-option *ngFor="let position of positions.data" [value]="position.name">
+                    {{position.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="field-wrapper">
+              <div class="input-field">
+                <label>მეილი</label>
+                <input type="text">
+                <span>უნდა მთავრდებოდეს @redberry.ge-ით</span>
+              </div>
+            </div>
+          <div class="field-wrapper">
+            <div class="input-field">
+              <label>ტელეფონის ნომერი</label>
+              <input type="text">
+              <span>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას</span>
+            </div>
+          </div>
+          <div class="submit-wrapper">
+            <input type="submit" value="შემდეგი">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+

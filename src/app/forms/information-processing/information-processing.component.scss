@@ -52,11 +52,28 @@
           display: flex;
           flex-direction: column;
           width: 100%;
+          .invalid{
+            color: $red;
+          }
+          .norm{
+            color: $black1;
+          }
+          .validation{
+            div{
+              color: $red;
+            }
+          }
           label{
             color: $black1;
             line-height: 21px;
             font-size: 18px;
             font-weight: 500;
+          }
+          input.ng-valid.ng-dirty{
+            border: 1.8px solid $green;
+          }
+          input.ng-invalid.ng-dirty{
+            border: 1.8px solid $red;
           }
           input {
             padding-left: 16px;
@@ -70,7 +87,6 @@
             margin-bottom: 10px;
             transition: 1s;
             color: rgba(0, 0, 0, 0.6);
-
             &:focus {
               border: 1.8px solid $light-blue;
               background: rgba(43, 75, 242, 0.06);
@@ -127,7 +143,7 @@
                 color: $black1;
                 font-size: 18px;
                 font-weight: 500;
-                mat-option{
+                .mat-option{
                   background-color: $white;
                   color: $black1;
                   font-size: 18px;
@@ -162,6 +178,17 @@
     right: 5px;
     top: 30px;
   }
+  .mat-form-field-required-marker{
+    opacity: 0;
+  }
+  .mat-form-field.ng-invalid.ng-touched{
+    .mat-form-field-flex{
+      border: 1.8px solid $red;
+    }
+    .mat-form-field-label {
+      color: $black1;
+    }
+  }
   .mat-form-field.mat-focused .mat-form-field-label {
     color: $black1;
   }
@@ -180,6 +207,7 @@
     background: $white;
   }
 }
+
 
 
 

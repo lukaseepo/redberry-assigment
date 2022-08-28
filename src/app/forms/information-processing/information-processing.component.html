@@ -12,24 +12,48 @@
     </div>
     <div class="form-item">
       <div class="container">
-        <form>
+        <form [formGroup]="userForm">
             <div class="input-fields">
               <div class="input-field">
-                <label>სახელი</label>
-                <input type="text">
-                <span>მინიმუმ 2 სიმბოლო ქართული ასოები</span>
+                <label [className]="userForm.get('name').invalid && (userForm.get('name').touched || userForm.get('name').dirty) ? 'invalid' : 'norm'">სახელი</label>
+                <input formControlName="name" type="text" value="">
+                <ng-template #valid><span>მინიმუმ 2 სიმბოლო ქართული ასოები</span></ng-template>
+                <div class="validation" *ngIf="userForm.get('name').invalid && (userForm.get('name').touched || userForm.get('name').dirty); else valid">
+                    <div *ngIf="userForm.get('name').errors?.['required']">
+                      აუცილებელია იყოს შევსებული
+                    </div>
+                    <div *ngIf="userForm.get('name').errors?.['pattern']">
+                      გამოიყენე ქართული ასოები
+                    </div>
+                    <div *ngIf="userForm.get('name').errors?.['minlength']">
+                      მინიმუმ 2 ასო გამოიყენეთ
+                    </div>
+                </div>
               </div>
               <div class="input-field">
-                <label>გვარი</label>
-                <input type="text">
-                <span>მინიმუმ 2 სიმბოლო ქართული ასოები</span>
+                <label [className]="userForm.get('surname').invalid && (userForm.get('surname').touched || userForm.get('surname').dirty) ? 'invalid' : 'norm'">გვარი</label>
+                <input formControlName="surname" type="text">
+                <ng-template #valid>
+                  <span>მინიმუმ 2 სიმბოლო ქართული ასოები</span>
+                </ng-template>
+                <div class="validation" *ngIf="userForm.get('surname').invalid && (userForm.get('surname').touched || userForm.get('surname').dirty); else valid">
+                  <div *ngIf="userForm.get('surname').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('surname').errors?.['pattern']">
+                    გამოიყენე ქართული ასოები
+                  </div>
+                  <div *ngIf="userForm.get('surname').errors?.['minlength']">
+                    მინიმუმ 2 ასო გამოიყენეთ
+                  </div>
+                </div>
               </div>
             </div>
             <div class="select-wrapper">
               <i class="fa-solid fa-angle-down"></i>
               <mat-form-field appearance="fill">
                 <mat-label>თიმი</mat-label>
-                <mat-select disableOptionCentering >
+                <mat-select formControlName="team_id" [disableOptionCentering]="true">
                   <mat-option *ngFor="let team of teams.data" [value]="team.id">
                     {{team.name}}
                   </mat-option>
@@ -40,8 +64,8 @@
               <i class="fa-solid fa-angle-down"></i>
               <mat-form-field appearance="fill">
                 <mat-label>პოზიცია</mat-label>
-                <mat-select disableOptionCentering>
-                  <mat-option *ngFor="let position of positions.data" [value]="position.name">
+                <mat-select formControlName="position_id" [disableOptionCentering]="true">
+                  <mat-option *ngFor="let position of positions.data" [value]="position.id">
                     {{position.name}}
                   </mat-option>
                 </mat-select>
@@ -49,20 +73,40 @@
             </div>
             <div class="field-wrapper">
               <div class="input-field">
-                <label>მეილი</label>
-                <input type="text">
-                <span>უნდა მთავრდებოდეს @redberry.ge-ით</span>
+                <label [className]="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty) ? 'invalid' : 'norm'">მეილი</label>
+                <input formControlName="email" type="text">
+                <ng-template #validemail>
+                  <span>უნდა მთავრდებოდეს @redberry.ge-ით</span>
+                </ng-template>
+                <div class="validation" *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty);else validemail">
+                  <div *ngIf="userForm.get('email').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('email').invalid">
+                    შეიყვანეთ სწორი იმეილი რომელიც მთავრდება @redberry.ge-ით
+                  </div>
+                </div>
               </div>
             </div>
           <div class="field-wrapper">
             <div class="input-field">
-              <label>ტელეფონის ნომერი</label>
-              <input type="text">
-              <span>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას</span>
+              <label [className]="userForm.get('phone_number').invalid && (userForm.get('phone_number').touched || userForm.get('phone_number').dirty) ? 'invalid' : 'norm'">ტელეფონის ნომერი</label>
+              <input formControlName="phone_number" type="text">
+              <ng-template #validPhoneNumber>
+                <span>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას</span>
+              </ng-template>
+              <div class="validation" *ngIf="userForm.get('phone_number').invalid && (userForm.get('phone_number').touched || userForm.get('phone_number').dirty);else validPhoneNumber">
+                <div *ngIf="userForm.get('phone_number').errors?.['required']">
+                  აუცილებელია იყოს შევსებული
+                </div>
+                <div *ngIf="userForm.get('phone_number').errors?.['pattern']">
+                  უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას
+                </div>
+              </div>
             </div>
           </div>
           <div class="submit-wrapper">
-            <input type="submit" value="შემდეგი">
+            <input [disabled]="userForm.invalid" type="submit" value="შემდეგი">
           </div>
         </form>
       </div>

@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {environment} from "../../../environments/environment";
+
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
 
-  constructor(private http: HttpClient) { }
-
-  getTeams(){
-    return this.http.get('https://pcfy.redberryinternship.ge/api/teams');
+  constructor(private http: HttpClient) {
   }
 
-  getPositions(){
-    return this.http.get('https://pcfy.redberryinternship.ge/api/positions');
+  getTeams() {
+    return this.http.get(`${environment.apiKey}teams`);
+  }
+
+  getPositions() {
+    return this.http.get(`${environment.apiKey}positions`);
   }
 }
+

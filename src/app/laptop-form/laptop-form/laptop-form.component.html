@@ -71,7 +71,7 @@
                             <label
                                 [className]="laptopForm.get('laptop_name').invalid && (laptopForm.get('laptop_name').touched || laptopForm.get('laptop_name').dirty) || isSubmited && laptopForm.get('laptop_name').invalid ? 'invalid' : 'norm'">ლეპტოპის
                                 სახელი</label>
-                            <input formControlName="laptop_name" type="text" value="">
+                            <input [className]="laptopForm.get('laptop_name').invalid && (laptopForm.get('laptop_name').touched || laptopForm.get('laptop_name').dirty) || isSubmited && laptopForm.get('laptop_name').invalid ? 'invalid-border' : ''"   formControlName="laptop_name" type="text" value="">
                             <ng-template #valid><span>ლათინური ასოები, ციფრები, !@#$%^&*()_+=</span></ng-template>
                             <div class="validation"
                                 *ngIf="laptopForm.get('laptop_name').invalid && (laptopForm.get('laptop_name').touched || laptopForm.get('laptop_name').dirty) || isSubmited && laptopForm.get('laptop_name').invalid; else valid">
@@ -111,7 +111,7 @@
                             <label
                                 [className]="laptopForm.get('laptop_cpu_cores').invalid && (laptopForm.get('laptop_cpu_cores').touched || laptopForm.get('laptop_cpu_cores').dirty) || isSubmited && laptopForm.get('laptop_cpu_cores').invalid ? 'invalid' : 'norm'">CPU-ს
                                 ბირთვი</label>
-                            <input formControlName="laptop_cpu_cores" type="text" value="">
+                            <input [className]="laptopForm.get('laptop_cpu_cores').invalid && (laptopForm.get('laptop_cpu_cores').touched || laptopForm.get('laptop_cpu_cores').dirty) || isSubmited && laptopForm.get('laptop_cpu_cores').invalid ? 'invalid-border' : ''"  formControlName="laptop_cpu_cores" type="text" value="">
                             <ng-template #validcore><span>მხოლოდ ციფრები</span></ng-template>
                             <div class="validation"
                                 *ngIf="laptopForm.get('laptop_cpu_cores').invalid && (laptopForm.get('laptop_cpu_cores').touched || laptopForm.get('laptop_cpu_cores').dirty)|| isSubmited && laptopForm.get('laptop_cpu_cores').invalid ; else validcore">
@@ -127,7 +127,7 @@
                             <label
                                 [className]="laptopForm.get('laptop_cpu_threads').invalid && (laptopForm.get('laptop_cpu_threads').touched || laptopForm.get('laptop_cpu_threads').dirty) || isSubmited && laptopForm.get('laptop_cpu_threads').invalid ? 'invalid' : 'norm'">CPU-ს
                                 ნაკადი</label>
-                            <input formControlName="laptop_cpu_threads" type="text" value="">
+                            <input [className]="laptopForm.get('laptop_cpu_threads').invalid && (laptopForm.get('laptop_cpu_threads').touched || laptopForm.get('laptop_cpu_threads').dirty) || isSubmited && laptopForm.get('laptop_cpu_threads').invalid ? 'invalid-border' : ''"  formControlName="laptop_cpu_threads" type="text" value="">
                             <ng-template #validthread><span>მხოლოდ ციფრები</span></ng-template>
                             <div class="validation"
                                 *ngIf="laptopForm.get('laptop_cpu_threads').invalid && (laptopForm.get('laptop_cpu_threads').touched || laptopForm.get('laptop_cpu_threads').dirty)|| isSubmited && laptopForm.get('laptop_cpu_threads').invalid; else validthread">
@@ -146,7 +146,7 @@
                                 [className]="laptopForm.get('laptop_ram').invalid && (laptopForm.get('laptop_ram').touched || laptopForm.get('laptop_ram').dirty) || isSubmited && laptopForm.get('laptop_ram').invalid ? 'invalid' : 'norm'">ლეპტოპის
                                 RAM (GB)
                             </label>
-                            <input formControlName="laptop_ram" type="text" value="">
+                            <input [className]="laptopForm.get('laptop_ram').invalid && (laptopForm.get('laptop_ram').touched || laptopForm.get('laptop_ram').dirty) || isSubmited && laptopForm.get('laptop_ram').invalid ? 'invalid-border' : ''"  formControlName="laptop_ram" type="text" value="">
                             <ng-template #validLaptopRam><span>მხოლოდ ციფრები</span></ng-template>
                             <div class="validation"
                                 *ngIf="laptopForm.get('laptop_ram').invalid && (laptopForm.get('laptop_ram').touched || laptopForm.get('laptop_ram').dirty) || isSubmited && laptopForm.get('laptop_ram').invalid; else validLaptopRam">
@@ -201,7 +201,7 @@
                         <div class="input-field top">
                             <label
                                 [className]="laptopForm.get('laptop_price').invalid && (laptopForm.get('laptop_price').touched || laptopForm.get('laptop_price').dirty) || isSubmited && laptopForm.get('laptop_price').invalid ? 'invalid' : 'norm'">ფასი</label>
-                            <input formControlName="laptop_price" type="text">
+                            <input [className]="laptopForm.get('laptop_price').invalid && (laptopForm.get('laptop_price').touched || laptopForm.get('laptop_price').dirty) || isSubmited && laptopForm.get('laptop_price').invalid ? 'invalid-border' : ''"  formControlName="laptop_price" type="text">
                             <ng-template #validprice><span>მხოლოდ ციფრები</span></ng-template>
                             <div class="validation"
                                 *ngIf="laptopForm.get('laptop_price').invalid && (laptopForm.get('laptop_price').touched || laptopForm.get('laptop_price').dirty) || isSubmited && laptopForm.get('laptop_price').invalid; else validprice">
@@ -252,4 +252,7 @@
             </div>
         </div>
     </div>
+    <footer class="footer-section">
+        <div class="logo"></div>
+    </footer>
 </section>

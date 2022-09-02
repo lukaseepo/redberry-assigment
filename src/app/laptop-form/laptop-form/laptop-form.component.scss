@@ -342,6 +342,7 @@
     position: relative;
     right: 5px;
     top: 30px;
+    background: $white;
   }
   .mat-form-field-required-marker{
     opacity: 0;
@@ -372,9 +373,6 @@
   .mat-option.mat-active{
     background-color: transparent;
     overflow-y: hidden;
-  }
-  .mat-select-panel {
-    background: $white;
   }
 }
 

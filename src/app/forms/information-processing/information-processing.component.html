@@ -2,48 +2,51 @@
   <div class="form-items">
     <div class="tabs">
       <div class="tab">
-        <a href="">თანამშრომლების ინფო</a>
-        <div class="line"></div>
+        <button (click)="activateFormsLocalStorage(0)">
+          თანამშრომლების ინფო
+        </button>
+        <div class="line active"></div>
       </div>
-      <div class="tab">
-        <a href="">ლეპტოპის მახასიათებლები</a>
+      <div class="tab" >
+        <button (click)="activateFormsLocalStorage(1)" [disabled]="userForm.get('userGroup').invalid">ლეპტოპის მახასიათებლები</button>
         <div class="line"></div>
       </div>
     </div>
     <div class="form-item">
       <div class="container">
-        <form [formGroup]="userForm">
+        <form id="form" [formGroup]="userForm">
+          <div formGroupName="userGroup" class="form" *ngIf="firstForm">
             <div class="input-fields">
               <div class="input-field">
-                <label [className]="userForm.get('name').invalid && (userForm.get('name').touched || userForm.get('name').dirty) ? 'invalid' : 'norm'">სახელი</label>
+                <label [className]="userForm.get('userGroup').get('name').invalid && (userForm.get('userGroup').get('name').touched || userForm.get('userGroup').get('name').dirty) || isSubmited && userForm.get('userGroup').get('name').invalid ? 'invalid' : 'norm'">სახელი</label>
                 <input formControlName="name" type="text" value="">
                 <ng-template #valid><span>მინიმუმ 2 სიმბოლო ქართული ასოები</span></ng-template>
-                <div class="validation" *ngIf="userForm.get('name').invalid && (userForm.get('name').touched || userForm.get('name').dirty); else valid">
-                    <div *ngIf="userForm.get('name').errors?.['required']">
-                      აუცილებელია იყოს შევსებული
-                    </div>
-                    <div *ngIf="userForm.get('name').errors?.['pattern']">
-                      გამოიყენე ქართული ასოები
-                    </div>
-                    <div *ngIf="userForm.get('name').errors?.['minlength']">
-                      მინიმუმ 2 ასო გამოიყენეთ
-                    </div>
+                <div class="validation" *ngIf="userForm.get('userGroup').get('name').invalid && (userForm.get('userGroup').get('name').touched || userForm.get('userGroup').get('name').dirty) || isSubmited && userForm.get('userGroup').get('name').invalid; else valid">
+                  <div *ngIf="userForm.get('userGroup').get('name').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('userGroup').get('name').errors?.['pattern']">
+                    გამოიყენე ქართული ასოები
+                  </div>
+                  <div *ngIf="userForm.get('userGroup').get('name').errors?.['minlength']">
+                    მინიმუმ 2 ასო გამოიყენეთ
+                  </div>
                 </div>
               </div>
               <div class="input-field">
-                <label [className]="userForm.get('surname').invalid && (userForm.get('surname').touched || userForm.get('surname').dirty) ? 'invalid' : 'norm'">გვარი</label>
+                <label [className]="userForm.get('userGroup').get('surname').invalid && (userForm.get('userGroup').get('surname').touched || userForm.get('userGroup').get('surname').dirty) || isSubmited && userForm.get('userGroup').get('surname').invalid ? 'invalid' : 'norm'">გვარი</label>
                 <input formControlName="surname" type="text">
                 <ng-template #valid>
                   <span>მინიმუმ 2 სიმბოლო ქართული ასოები</span>
                 </ng-template>
-                <div class="validation" *ngIf="userForm.get('surname').invalid && (userForm.get('surname').touched || userForm.get('surname').dirty); else valid">
-                  <div *ngIf="userForm.get('surname').errors?.['required']">
+                <div class="validation" *ngIf="userForm.get('userGroup').get('surname').invalid && (userForm.get('userGroup').get('surname').touched || userForm.get('userGroup').get('surname').dirty) || isSubmited && userForm.get('userGroup').get('surname').invalid; else valid">
+                  <div *ngIf="userForm.get('userGroup').get('surname').errors?.['required']">
                     აუცილებელია იყოს შევსებული
                   </div>
-                  <div *ngIf="userForm.get('surname').errors?.['pattern']">
+                  <div *ngIf="userForm.get('userGroup').get('surname').errors?.['pattern']">
                     გამოიყენე ქართული ასოები
                   </div>
-                  <div *ngIf="userForm.get('surname').errors?.['minlength']">
+                  <div *ngIf="userForm.get('userGroup').get('surname').errors?.['minlength']">
                     მინიმუმ 2 ასო გამოიყენეთ
                   </div>
                 </div>
@@ -73,46 +76,249 @@
             </div>
             <div class="field-wrapper">
               <div class="input-field">
-                <label [className]="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty) ? 'invalid' : 'norm'">მეილი</label>
+                <label [className]="userForm.get('userGroup').get('email').invalid && (userForm.get('userGroup').get('email').touched || userForm.get('userGroup').get('email').dirty) || isSubmited && userForm.get('userGroup').get('email').invalid? 'invalid' : 'norm'">მეილი</label>
                 <input formControlName="email" type="text">
                 <ng-template #validemail>
                   <span>უნდა მთავრდებოდეს @redberry.ge-ით</span>
                 </ng-template>
-                <div class="validation" *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty);else validemail">
-                  <div *ngIf="userForm.get('email').errors?.['required']">
+                <div class="validation" *ngIf="userForm.get('userGroup').get('email').invalid && (userForm.get('userGroup').get('email').touched || userForm.get('userGroup').get('email').dirty) || isSubmited && userForm.get('userGroup').get('email').invalid;else validemail">
+                  <div *ngIf="userForm.get('userGroup').get('email').errors?.['required']">
                     აუცილებელია იყოს შევსებული
                   </div>
-                  <div *ngIf="userForm.get('email').invalid">
+                  <div *ngIf="userForm.get('userGroup').get('email').invalid">
                     შეიყვანეთ სწორი იმეილი რომელიც მთავრდება @redberry.ge-ით
                   </div>
                 </div>
               </div>
             </div>
-          <div class="field-wrapper">
-            <div class="input-field">
-              <label [className]="userForm.get('phone_number').invalid && (userForm.get('phone_number').touched || userForm.get('phone_number').dirty) ? 'invalid' : 'norm'">ტელეფონის ნომერი</label>
-              <input formControlName="phone_number" type="text">
-              <ng-template #validPhoneNumber>
-                <span>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას</span>
-              </ng-template>
-              <div class="validation" *ngIf="userForm.get('phone_number').invalid && (userForm.get('phone_number').touched || userForm.get('phone_number').dirty);else validPhoneNumber">
-                <div *ngIf="userForm.get('phone_number').errors?.['required']">
-                  აუცილებელია იყოს შევსებული
-                </div>
-                <div *ngIf="userForm.get('phone_number').errors?.['pattern']">
-                  უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას
+            <div class="field-wrapper">
+              <div class="input-field">
+                <label [className]="userForm.get('userGroup').get('phone_number').invalid && (userForm.get('userGroup').get('phone_number').touched || userForm.get('userGroup').get('phone_number').dirty) || isSubmited && userForm.get('userGroup').get('phone_number').invalid  ? 'invalid' : 'norm'">ტელეფონის ნომერი</label>
+                <input formControlName="phone_number" type="text">
+                <ng-template #validPhoneNumber>
+                  <span>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას</span>
+                </ng-template>
+                <div class="validation" *ngIf="userForm.get('userGroup').get('phone_number').invalid && (userForm.get('userGroup').get('phone_number').touched || userForm.get('userGroup').get('phone_number').dirty) || isSubmited && userForm.get('userGroup').get('phone_number').invalid;else validPhoneNumber">
+                  <div *ngIf="userForm.get('userGroup').get('phone_number').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('userGroup').get('phone_number').errors?.['pattern']">
+                    უნდა იწყებოდეს +სით და აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="submit-wrapper">
+              <button (click)="activateForms(0)"  type="submit">შემდეგი</button>
+            </div>
           </div>
-          <div class="submit-wrapper">
-            <input [disabled]="userForm.invalid" type="submit" value="შემდეგი">
+          <div class="form" *ngIf="secondForm">
+            <div class="upload">
+              <div class="custom-dropzone background-inv" *ngIf="isSubmited && files.length === 0" ngx-dropzone  [accept]="'image/*'" [multiple]="false" (change)="onSelect($event)">
+                <ngx-dropzone-label>
+                  <div class="upload-items">
+                    <svg width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M24.3201 3.04653L37.052 24.1286C38.8817 27.1565 37.983 31.1402 35.0437 33.0253C34.0572 33.6604 32.9073 33.9988 31.732 34H6.26622C2.80631 34 0 31.11 0 27.5418C0 26.3348 0.328701 25.1543 0.946203 24.1286L13.68 3.04653C15.5078 0.0186215 19.3725 -0.90883 22.3118 0.976296C23.125 1.49763 23.8128 2.20597 24.3201 3.04653ZM19.0001 26.4444C19.504 26.4444 19.9872 26.2454 20.3436 25.8911C20.6999 25.5369 20.9001 25.0564 20.9001 24.5555C20.9001 24.0545 20.6999 23.5741 20.3436 23.2198C19.9872 22.8656 19.504 22.6666 19.0001 22.6666C18.4961 22.6666 18.0129 22.8656 17.6565 23.2198C17.3002 23.5741 17.1 24.0545 17.1 24.5555C17.1 25.0564 17.3002 25.5369 17.6565 25.8911C18.0129 26.2454 18.4961 26.4444 19.0001 26.4444ZM19.0001 9.44425C18.4961 9.44425 18.0129 9.64326 17.6565 9.9975C17.3002 10.3517 17.1 10.8322 17.1 11.3332V18.8888C17.1 19.3897 17.3002 19.8702 17.6565 20.2244C18.0129 20.5787 18.4961 20.7777 19.0001 20.7777C19.504 20.7777 19.9872 20.5787 20.3436 20.2244C20.6999 19.8702 20.9001 19.3897 20.9001 18.8888V11.3332C20.9001 10.8322 20.6999 10.3517 20.3436 9.9975C19.9872 9.64326 19.504 9.44425 19.0001 9.44425Z" fill="#C9CB52"/>
+                    </svg>
+                    <h2 class="invalid">ჩააგდე ან ატვირთე <br> ლეპტოპის ფოტო</h2>
+                    <button  type="button">ატვირთე</button>
+                  </div>
+                </ngx-dropzone-label>
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"></ngx-dropzone-image-preview>
+              </div>
+              <div *ngIf="files.length === 0 && !isSubmited || files.length === 1" class="custom-dropzone" ngx-dropzone  [accept]="'image/*'" [multiple]="false" (change)="onSelect($event)">
+                <ngx-dropzone-label>
+                  <div class="upload-items">
+                    <h2>ჩააგდე ან ატვირთე <br> ლეპტოპის ფოტო</h2>
+                    <button>ატვირთე</button>
+                  </div>
+                </ngx-dropzone-label>
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"></ngx-dropzone-image-preview>
+              </div>
+              <div *ngIf="uploaded" class="laptop-image-uploader-wrapper">
+                <div class="laptop-image-uploader-items">
+                  <div class="laptop-image-info">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11 0C4.925 0 0 4.925 0 11C0 17.075 4.925 22 11 22C17.075 22 22 17.075 22 11C22 4.925 17.075 0 11 0ZM15.768 9.14C15.8558 9.03964 15.9226 8.92274 15.9646 8.79617C16.0065 8.6696 16.0227 8.53591 16.0123 8.40298C16.0018 8.27005 15.9648 8.14056 15.9036 8.02213C15.8423 7.90369 15.758 7.79871 15.6555 7.71334C15.5531 7.62798 15.4346 7.56396 15.3071 7.52506C15.1796 7.48616 15.0455 7.47316 14.9129 7.48683C14.7802 7.50049 14.6517 7.54055 14.5347 7.60463C14.4178 7.66872 14.3149 7.75554 14.232 7.86L9.932 13.019L7.707 10.793C7.5184 10.6108 7.2658 10.51 7.0036 10.5123C6.7414 10.5146 6.49059 10.6198 6.30518 10.8052C6.11977 10.9906 6.0146 11.2414 6.01233 11.5036C6.01005 11.7658 6.11084 12.0184 6.293 12.207L9.293 15.207C9.39126 15.3052 9.50889 15.3818 9.63842 15.4321C9.76794 15.4823 9.9065 15.505 10.0453 15.4986C10.184 15.4923 10.32 15.4572 10.4444 15.3954C10.5688 15.3337 10.6791 15.2467 10.768 15.14L15.768 9.14Z" fill="#BED918"/>
+                    </svg>
+                    <span>
+                      {{files[0].name}}
+                    </span>
+                    <span>{{math.round(0.01 * (files[0].size * 0.00098)) === 0 ? 0 : math.round(0.01 * (files[0].size * 0.00098))}} mb</span>
+                  </div>
+                  <div  class="custom-dropzone-uploader" ngx-dropzone  [accept]="'image/*'" [multiple]="false" (change)="onSelect($event)">
+                    <button class="uploader">
+                      თავიდან ატვირთე
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-fields">
+              <div class="input-field top">
+                <label [className]="userForm.get('laptop_name').invalid && (userForm.get('laptop_name').touched || userForm.get('laptop_name').dirty) || isSubmited && userForm.get('laptop_name').invalid ? 'invalid' : 'norm'">ლეპტოპის სახელი</label>
+                <input formControlName="laptop_name" type="text" value="">
+                <ng-template #valid><span>ლათინური ასოები, ციფრები, !@#$%^&*()_+=</span></ng-template>
+                <div class="validation" *ngIf="userForm.get('laptop_name').invalid && (userForm.get('laptop_name').touched || userForm.get('laptop_name').dirty) || isSubmited && userForm.get('laptop_name').invalid; else valid">
+                  <div *ngIf="userForm.get('laptop_name').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('laptop_name').errors?.['pattern']">
+                    გამოიყენე ლათინური ასოები, ციფრები ან !@#$%^&*()-_+=
+                  </div>
+                </div>
+              </div>
+              <div class="select-wrapper">
+                <i class="fa-solid fa-angle-down"></i>
+                <mat-form-field appearance="fill">
+                  <mat-label>ბრენდი</mat-label>
+                  <mat-select formControlName="laptop_brand_id" [disableOptionCentering]="true">
+                    <mat-option *ngFor="let brand of brands.data" [value]="brand.id">
+                      {{brand.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="input-fields">
+              <div class="select-wrapper">
+                <i class="fa-solid fa-angle-down"></i>
+                <mat-form-field appearance="fill">
+                  <mat-label>CPU</mat-label>
+                  <mat-select formControlName="laptop_cpu" [disableOptionCentering]="true">
+                    <mat-option *ngFor="let cpu of cpus.data" [value]="cpu.name">
+                      {{cpu.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="input-field top">
+                <label [className]="userForm.get('laptop_cpu_cores').invalid && (userForm.get('laptop_cpu_cores').touched || userForm.get('laptop_cpu_cores').dirty) || isSubmited && userForm.get('laptop_cpu_cores').invalid ? 'invalid' : 'norm'">CPU-ს ბირთვი</label>
+                <input formControlName="laptop_cpu_cores" type="text" value="">
+                <ng-template #validcore><span>მხოლოდ ციფრები</span></ng-template>
+                <div class="validation" *ngIf="userForm.get('laptop_cpu_cores').invalid && (userForm.get('laptop_cpu_cores').touched || userForm.get('laptop_cpu_cores').dirty)|| isSubmited && userForm.get('laptop_cpu_cores').invalid ; else validcore">
+                  <div *ngIf="userForm.get('laptop_cpu_cores').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('laptop_cpu_cores').errors?.['pattern']">
+                    გამოიყენე მხოლოდ ციფრები
+                  </div>
+                </div>
+              </div>
+              <div class="input-field top">
+                <label [className]="userForm.get('laptop_cpu_threads').invalid && (userForm.get('laptop_cpu_threads').touched || userForm.get('laptop_cpu_threads').dirty) || isSubmited && userForm.get('laptop_cpu_threads').invalid ? 'invalid' : 'norm'">CPU-ს ნაკადი</label>
+                <input formControlName="laptop_cpu_threads" type="text" value="">
+                <ng-template #validthread><span>მხოლოდ ციფრები</span></ng-template>
+                <div class="validation" *ngIf="userForm.get('laptop_cpu_threads').invalid && (userForm.get('laptop_cpu_threads').touched || userForm.get('laptop_cpu_threads').dirty)|| isSubmited && userForm.get('laptop_cpu_threads').invalid; else validthread">
+                  <div *ngIf="userForm.get('laptop_cpu_threads').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('laptop_cpu_threads').errors?.['pattern']">
+                    გამოიყენე მხოლოდ ციფრები
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-fields">
+              <div class="input-field top">
+                <label [className]="userForm.get('laptop_ram').invalid && (userForm.get('laptop_ram').touched || userForm.get('laptop_ram').dirty) || isSubmited && userForm.get('laptop_ram').invalid ? 'invalid' : 'norm'">ლეპტოპის RAM (GB)
+                </label>
+                <input formControlName="laptop_ram" type="text" value="">
+                <ng-template #validLaptopRam><span>მხოლოდ ციფრები</span></ng-template>
+                <div class="validation" *ngIf="userForm.get('laptop_ram').invalid && (userForm.get('laptop_ram').touched || userForm.get('laptop_ram').dirty) || isSubmited && userForm.get('laptop_ram').invalid; else validLaptopRam">
+                  <div *ngIf="userForm.get('laptop_ram').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                  <div *ngIf="userForm.get('laptop_ram').errors?.['pattern']">
+                    გამოიყენე მხოლოდ ციფრები
+                  </div>
+                </div>
+              </div>
+              <div class="input-field top">
+                <ng-template #validHardDrive><label>მეხსიერების ტიპი</label></ng-template>
+                <div class="validation" *ngIf="userForm.get('laptop_hard_drive_type').invalid && isSubmited;else validHardDrive">
+                  <div *ngIf="userForm.get('laptop_hard_drive_type').errors?.['required']">
+                    მეხსიერების ტიპი <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.1474 1.79208L21.5538 14.1933C22.6182 15.9744 22.0954 18.3178 20.3855 19.4267C19.8117 19.8002 19.1427 19.9993 18.4591 20H3.64517C1.63248 20 0 18.3 0 16.2011C0 15.4911 0.191211 14.7966 0.550423 14.1933L7.95792 1.79208C9.02118 0.0109538 11.2693 -0.534606 12.9791 0.574292C13.4522 0.880961 13.8523 1.29763 14.1474 1.79208ZM11.0527 15.5555C11.3458 15.5555 11.6269 15.4385 11.8342 15.2301C12.0415 15.0217 12.1579 14.7391 12.1579 14.4444C12.1579 14.1497 12.0415 13.8671 11.8342 13.6587C11.6269 13.4503 11.3458 13.3333 11.0527 13.3333C10.7595 13.3333 10.4784 13.4503 10.2711 13.6587C10.0638 13.8671 9.9474 14.1497 9.9474 14.4444C9.9474 14.7391 10.0638 15.0217 10.2711 15.2301C10.4784 15.4385 10.7595 15.5555 11.0527 15.5555ZM11.0527 5.55544C10.7595 5.55544 10.4784 5.67251 10.2711 5.88088C10.0638 6.08926 9.9474 6.37187 9.9474 6.66656V11.111C9.9474 11.4057 10.0638 11.6883 10.2711 11.8967C10.4784 12.1051 10.7595 12.2222 11.0527 12.2222C11.3458 12.2222 11.6269 12.1051 11.8342 11.8967C12.0415 11.6883 12.1579 11.4057 12.1579 11.111V6.66656C12.1579 6.37187 12.0415 6.08926 11.8342 5.88088C11.6269 5.67251 11.3458 5.55544 11.0527 5.55544Z" fill="#C9CB52"/>
+                  </svg>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="option">
+                    <input formControlName="laptop_hard_drive_type" type="radio" name="laptop_hard_drive_type" value="SSD">
+                    <label>SSD</label>
+                  </div>
+                  <div class="option">
+                    <input formControlName="laptop_hard_drive_type" type="radio" name="laptop_hard_drive_type" value="HDD">
+                    <label>HDD</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-fields">
+              <div class="input-field top">
+                <label [className]="userForm.get('laptop_purchase_date').invalid && (userForm.get('laptop_purchase_date').touched || userForm.get('laptop_purchase_date').dirty) || isSubmited && userForm.get('laptop_purchase_date').invalid ? 'invalid' : 'norm'">შეძენის რიცხვი (არჩევითი)</label>
+                <input formControlName="laptop_purchase_date" placeholder="დდ/თთ/წწწწ" type="text" value="">
+                <div class="validation" *ngIf="userForm.get('laptop_purchase_date').invalid && (userForm.get('laptop_purchase_date').touched || userForm.get('laptop_purchase_date').dirty) || isSubmited && userForm.get('laptop_purchase_date').invalid">
+                  <div *ngIf="userForm.get('laptop_purchase_date').errors?.['pattern']">
+                    ჩაწერე სწორი თარიღი
+                  </div>
+                </div>
+              </div>
+              <div class="input-field top">
+                <label [className]="userForm.get('laptop_price').invalid && (userForm.get('laptop_price').touched || userForm.get('laptop_price').dirty) || isSubmited && userForm.get('laptop_price').invalid ? 'invalid' : 'norm'">ფასი</label>
+                <input formControlName="laptop_price" type="text">
+                <ng-template #validprice><span>მხოლოდ ციფრები</span></ng-template>
+                <div class="validation" *ngIf="userForm.get('laptop_price').invalid && (userForm.get('laptop_price').touched || userForm.get('laptop_price').dirty) || isSubmited && userForm.get('laptop_price').invalid; else validprice">
+                  <div *ngIf="userForm.get('laptop_price').errors?.['pattern']">
+                    ჩაწერეთ სწორი რიცხვი
+                  </div>
+                  <div *ngIf="userForm.get('laptop_price').errors?.['required']">
+                    აუცილებელია იყოს შევსებული
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-fields">
+              <div class="input-field top">
+                <ng-template #validState><label>ლეპტოპის მდგომარეობა</label>
+                </ng-template>
+                <div class="validation" *ngIf="userForm.get('laptop_state').invalid && isSubmited;else validState">
+                  <div *ngIf="userForm.get('laptop_state').errors?.['required']">
+                    ლეპტოპის მდგომარეობა
+                    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.1474 1.79208L21.5538 14.1933C22.6182 15.9744 22.0954 18.3178 20.3855 19.4267C19.8117 19.8002 19.1427 19.9993 18.4591 20H3.64517C1.63248 20 0 18.3 0 16.2011C0 15.4911 0.191211 14.7966 0.550423 14.1933L7.95792 1.79208C9.02118 0.0109538 11.2693 -0.534606 12.9791 0.574292C13.4522 0.880961 13.8523 1.29763 14.1474 1.79208ZM11.0527 15.5555C11.3458 15.5555 11.6269 15.4385 11.8342 15.2301C12.0415 15.0217 12.1579 14.7391 12.1579 14.4444C12.1579 14.1497 12.0415 13.8671 11.8342 13.6587C11.6269 13.4503 11.3458 13.3333 11.0527 13.3333C10.7595 13.3333 10.4784 13.4503 10.2711 13.6587C10.0638 13.8671 9.9474 14.1497 9.9474 14.4444C9.9474 14.7391 10.0638 15.0217 10.2711 15.2301C10.4784 15.4385 10.7595 15.5555 11.0527 15.5555ZM11.0527 5.55544C10.7595 5.55544 10.4784 5.67251 10.2711 5.88088C10.0638 6.08926 9.9474 6.37187 9.9474 6.66656V11.111C9.9474 11.4057 10.0638 11.6883 10.2711 11.8967C10.4784 12.1051 10.7595 12.2222 11.0527 12.2222C11.3458 12.2222 11.6269 12.1051 11.8342 11.8967C12.0415 11.6883 12.1579 11.4057 12.1579 11.111V6.66656C12.1579 6.37187 12.0415 6.08926 11.8342 5.88088C11.6269 5.67251 11.3458 5.55544 11.0527 5.55544Z" fill="#C9CB52"/>
+                  </svg>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="option">
+                    <input formControlName="laptop_state" type="radio" name="laptop_state" value="new">
+                    <label>ახალი</label>
+                  </div>
+                  <div class="option">
+                    <input formControlName="laptop_state" type="radio" name="laptop_state" value="used">
+                    <label>მეორადი</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-submit-wrapper">
+              <div class="submit-wrapper-items">
+                <button (click)="activateForms(1)">უკან</button>
+                <input (click)="onSubmit()" type="submit" value="დამახსოვრება">
+              </div>
+            </div>
           </div>
         </form>
       </div>
     </div>
   </div>
+  <footer class="footer-section">
+      <div class="logo"></div>
+  </footer>
 </section>
+
 
 
 

@@ -1,3 +1,4 @@
+import { LaptopFormGuard } from './../guards/laptop-form.guard';
 import { LaptopService } from './../services/laptop.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,10 @@ export class LaptopFormComponent implements OnInit {
   imgFile;
   uploaded: boolean;
   files = [];
-  constructor(private http: LaptopService, private router: Router) { 
+  userData; 
+  formData: FormData = new FormData();
+  constructor(private http: LaptopService, private router: Router, private guard: LaptopFormGuard) {
+    this.userData = {...http.userData};
     this.laptopForm = new FormGroup({
       laptop_name: new FormControl(localStorage.getItem('laptopForm') ? this.data.laptop_name : '', [Validators.required, Validators.pattern(/^[a-zA-Z0-9!@#$%^&*()_+]+$/)]),
       laptop_brand_id: new FormControl(localStorage.getItem('laptopForm') ? this.data.laptop_brand_id : '', [Validators.required]),
@@ -73,8 +77,27 @@ export class LaptopFormComponent implements OnInit {
       scroll(0,0)
       return;
     }
-    console.log(this.http.userData);
+    this.formData.append('name', this.userData.name)
+    this.formData.append('surname', this.userData.surname)
+    this.formData.append('email', this.userData.email)
+    this.formData.append('position_id', this.userData.position_id)
+    this.formData.append('team_id', this.userData.team_id,)
+    this.formData.append('phone_number', this.userData.phone_number)
+    this.formData.append('laptop_image', this.imgFile[0])
+    this.formData.append('laptop_name', this.laptopForm.get('laptop_name').value)
+    this.formData.append('laptop_brand_id',this.laptopForm.get('laptop_brand_id').value)
+    this.formData.append('laptop_cpu',this.laptopForm.get('laptop_cpu').value)
+    this.formData.append('laptop_cpu_cores',this.laptopForm.get('laptop_cpu_cores').value)
+    this.formData.append('laptop_cpu_threads',this.laptopForm.get('laptop_cpu_threads').value)
+    this.formData.append('laptop_ram',this.laptopForm.get('laptop_ram').value)
+    this.formData.append('laptop_hard_drive_type',this.laptopForm.get('laptop_hard_drive_type').value)
+    this.formData.append('laptop_purchase_date',this.laptopForm.get('laptop_purchase_date').value)
+    this.formData.append('laptop_state',this.laptopForm.get('laptop_state').value)
+    this.formData.append('laptop_price',this.laptopForm.get('laptop_price').value)
+    this.formData.append('token','576491d0d598ec6839fddb19fd22c163')
+
     this.isSubmited = false;
+    this.http.postUserInfo(this.formData).subscribe((res) => console.log(res));
   }
 
 }

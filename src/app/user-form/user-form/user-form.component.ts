@@ -1,4 +1,5 @@
-import { Router } from '@angular/router';
+import { LaptopFormGuard } from './../../laptop-form/guards/laptop-form.guard';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {FormService} from "../services/form.service";
 import {FormGroup, FormControl, Validators} from '@angular/forms';
@@ -19,7 +20,7 @@ export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   data = JSON.parse(localStorage.getItem('userObj'));
   isSubmited: boolean = false;
-  constructor(private _http: FormService, private _router: Router, private laptopService: LaptopService) {
+  constructor(private _http: FormService, private router: Router, private laptopService: LaptopService, private guard: LaptopFormGuard) {
     this.userForm = new FormGroup({
         name: new FormControl( localStorage.getItem('userObj') ? this.data.name : '', [Validators.required, Validators.minLength(2), Validators.pattern(/^[ა-ჰ]+$/)]),
         surname: new FormControl(localStorage.getItem('userObj') ? this.data.surname : '',[Validators.required, Validators.minLength(2), Validators.pattern(/^[ა-ჰ]+$/)]),
@@ -27,6 +28,7 @@ export class UserFormComponent implements OnInit {
         position_id: new FormControl(localStorage.getItem('userObj') ? this.data.position_id : '', [Validators.required]),
         email: new FormControl(localStorage.getItem('userObj') ? this.data.email : '', [Validators.required, Validators.email, ValidateEmail]),
         phone_number: new FormControl(localStorage.getItem('userObj') ? this.data.phone_number : '', [Validators.required,   Validators.pattern('^((\\+995-?))?[0-9]{9}$')]),
+     
      });
 
      if(localStorage.getItem('userObj') && this.data.team_id !== ''){
@@ -41,6 +43,9 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm.valueChanges.subscribe((e) => {
+      if(this.userForm.invalid){
+        localStorage.removeItem('savedData');
+      }
       localStorage.setItem('userObj', `${JSON.stringify({
         'name': e.name,
         'surname': e.surname,
@@ -76,8 +81,9 @@ export class UserFormComponent implements OnInit {
       return;
     }
     this.laptopService.userData = this.userForm.value;
+    localStorage.setItem('savedData', `${JSON.stringify(this.laptopService.userData)}`);
     this.isSubmited = false;
-    this._router.navigate(['/','laptop-form'])
+    this.router.navigate(['/','laptop-form'])
   }
 
 }

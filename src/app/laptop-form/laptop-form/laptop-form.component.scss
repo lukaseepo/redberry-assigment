@@ -402,11 +402,13 @@
   border: 2px dashed $red !important;
 }
 
-#file{
-  display: none;
+.disable{
+    pointer-events: none;
 }
 
-
+.invalid-border{
+    border: 1px solid $red !important;
+  }
 
 
 

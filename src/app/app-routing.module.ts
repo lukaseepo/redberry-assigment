@@ -10,9 +10,13 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'forms',
-    loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule)
-  }
+    path: 'user-form',
+    loadChildren: () => import('./user-form/forms.module').then(m => m.FormsModule)
+  },
+  {
+    path: 'laptop-form',
+    loadChildren: () => import('./laptop-form/laptop-form.module').then(m => m.LaptopFormModule)
+  },
 ];
 
 @NgModule({

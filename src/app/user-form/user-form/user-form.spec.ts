@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { InformationProcessingComponent } from './information-processing.component';
+import { UserFormComponent } from './user-form.component';
 
 describe('InformationProcessingComponent', () => {
-  let component: InformationProcessingComponent;
-  let fixture: ComponentFixture<InformationProcessingComponent>;
+  let component: UserFormComponent;
+  let fixture: ComponentFixture<UserFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InformationProcessingComponent ]
+      declarations: [ UserFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InformationProcessingComponent);
+    fixture = TestBed.createComponent(UserFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

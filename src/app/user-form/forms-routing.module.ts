@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {InformationProcessingComponent} from "./information-processing/information-processing.component";
+import { UserFormComponent } from './user-form/user-form.component';
+
 
 const routes: Routes = [
-  {path: '', component: InformationProcessingComponent}
+  {path: '', component: UserFormComponent}
 ];
 
 @NgModule({

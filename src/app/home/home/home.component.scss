@@ -8,6 +8,12 @@
       display: grid;
       grid-template-columns: 1fr;
       grid-row-gap: 40px;
+      @media screen and (max-width: 800px) {
+        padding: 10px;
+      }
+      @media screen and (max-width: 600px) {
+        grid-gap: 0px;
+      }
       .logo{
         width: 100%;
         display: flex;
@@ -28,8 +34,15 @@
           width: 781px;
           height: 482px;
           background-image: url('/assets/img/layer1.png');
-          background-size: 100% 100%;
+          background-size: cover cover;
           background-position: center center;
+          background-repeat: no-repeat;
+          @media screen and (max-width: 800px) {
+            width: 100%;
+          }
+          @media screen and (max-width:600px) {
+            background-image: url('/assets/img/Group.png');
+          }
         }
       }
      .links{
@@ -38,11 +51,17 @@
        align-items: center;
        flex-direction: column;
        margin-top: 20px;
+       @media screen and (max-width: 600px) {
+         margin: 0px;
+       }
        a{
          width: 387px;
          height: 60px;
          margin-top: 20px;
          @include input;
+         @media screen and (max-width: 440px) {
+          width: 100%;
+        }
        }
      }
   }

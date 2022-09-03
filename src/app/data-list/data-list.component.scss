@@ -1,0 +1,76 @@
+@import '../components/colors.scss';
+
+.info-section{
+    width: 100%;
+    padding-top: 40px;
+    .info-items{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 30px;
+        .title{
+            width: 100%;
+            text-align: center;
+            h1{
+                color: $black1;
+                font-size: 34px;
+                font-weight: 700;
+            }
+        }
+        .info-wrapper{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 30px;
+            grid-row-gap: 20px;
+            padding: 20px;
+            @media screen and (max-width: 760px) {
+                grid-template-columns: 1fr;
+            }
+            .info-item{
+                padding: 15px;
+                width: 100%;
+                border-radius: 20px;
+                background-color: $blue6;
+                border: 1px solid $blue7;
+                display: flex;
+                .img{
+                    width: 266px;
+                    height: 178px;
+                    margin-right: 30px;
+                    @media screen and (max-width: 1020px) {
+                        width: auto;
+                    }
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .info{
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 20px;
+                    .fullname{
+                        width: max-content;
+                    }
+                    p{
+                        color: $black2;
+                        font-size: 18px;
+                        font-weight: 500;
+                        padding-bottom: 5px;
+                        padding-top: 5px;
+                    }
+                    a{
+                        color: $blue4;
+                        text-decoration: underline;
+                        font-size: 16px;
+                        margin-top: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bg{
+    max-width: 1100px;
+}

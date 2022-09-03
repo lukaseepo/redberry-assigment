@@ -17,6 +17,14 @@ const routes: Routes = [
     path: 'laptop-form',
     loadChildren: () => import('./laptop-form/laptop-form.module').then(m => m.LaptopFormModule)
   },
+  {
+    path: 'data-list',
+    loadChildren: () => import('./data-list/data-list.module').then(m => m.DataListModule)
+  },
+  {
+    path: 'data-list/:id',
+    loadChildren: () => import('./data-detail/data-detail.module').then(m => m.DataDetailModule)
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,23 @@
+<section class="info-section">
+    <div class="container bg">
+        <div class="info-items">
+            <div class="title">
+                <h1>ჩანაწერების სია</h1>
+            </div>
+            <div class="info-wrapper">
+                <div class="info-item" *ngFor="let data of datas.data">
+                    <div class="img">
+                        <img src="https://pcfy.redberryinternship.ge/{{data.laptop.image}}" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="fullname">
+                            <p>{{data.user.name}} {{data.user.surname}}</p>
+                        </div>
+                        <p>{{data.laptop.name}}</p>
+                        <a routerLink="/data-list/{{data.laptop.id}}">მეტის ნახვა</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

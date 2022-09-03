@@ -6,7 +6,8 @@
   background-color: $grey;
   padding-bottom: 20px;
   height: 100%;
-
+  position: fixed;
+  top: 0;
   .footer-section {
     width: 100%;
     display: flex;

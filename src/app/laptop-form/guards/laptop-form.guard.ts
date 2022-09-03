@@ -7,13 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LaptopFormGuard implements CanActivate {
-  constructor(private laptopService: LaptopService) {
-  }
   canActivate(
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
-      if(localStorage.getItem('savedData')) {
+      if(localStorage.getItem('savedData') || localStorage.getItem('rel')) {
           return true;
       }
       return false;

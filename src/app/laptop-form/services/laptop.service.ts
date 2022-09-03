@@ -6,7 +6,6 @@ import {environment} from "../../../environments/environment";
   providedIn: 'root'
 })
 export class LaptopService {
-  userData;
   constructor(private http: HttpClient) { }
 
   getBrands(){

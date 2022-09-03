@@ -20,7 +20,7 @@ export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   data = JSON.parse(localStorage.getItem('userObj'));
   isSubmited: boolean = false;
-  constructor(private _http: FormService, private router: Router, private laptopService: LaptopService, private guard: LaptopFormGuard) {
+  constructor(private _http: FormService, private router: Router,private guard: LaptopFormGuard) {
     this.userForm = new FormGroup({
         name: new FormControl( localStorage.getItem('userObj') ? this.data.name : '', [Validators.required, Validators.minLength(2), Validators.pattern(/^[ა-ჰ]+$/)]),
         surname: new FormControl(localStorage.getItem('userObj') ? this.data.surname : '',[Validators.required, Validators.minLength(2), Validators.pattern(/^[ა-ჰ]+$/)]),
@@ -42,18 +42,14 @@ export class UserFormComponent implements OnInit {
 
 
   ngOnInit(): void {
+    localStorage.removeItem('rel');
     this.userForm.valueChanges.subscribe((e) => {
       if(this.userForm.invalid){
         localStorage.removeItem('savedData');
+      }else{
+        localStorage.setItem('savedData', `${JSON.stringify(this.userForm.value)}`);
       }
-      localStorage.setItem('userObj', `${JSON.stringify({
-        'name': e.name,
-        'surname': e.surname,
-        'team_id': e.team_id,
-        'position_id': e.position_id,
-        'email': e.email,
-        'phone_number': e.phone_number,
-      })}`)
+      localStorage.setItem('userObj', `${JSON.stringify(e)}`)
     })
     this.getTeams();
   }
@@ -80,8 +76,6 @@ export class UserFormComponent implements OnInit {
       scroll(0,0);
       return;
     }
-    this.laptopService.userData = this.userForm.value;
-    localStorage.setItem('savedData', `${JSON.stringify(this.laptopService.userData)}`);
     this.isSubmited = false;
     this.router.navigate(['/','laptop-form'])
   }

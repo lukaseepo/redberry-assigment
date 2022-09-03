@@ -16,13 +16,13 @@ export class LaptopFormComponent implements OnInit {
   isSubmited:boolean = false;
   brands: any = [];
   cpus: any = [];
-  imgFile;
-  uploaded: boolean;
   files = [];
-  userData; 
+  imgFile;
+  showPopUp: boolean = false;
+  uploaded: boolean;
+  userData = JSON.parse(localStorage.getItem('savedData')); 
   formData: FormData = new FormData();
   constructor(private http: LaptopService, private router: Router, private guard: LaptopFormGuard) {
-    this.userData = {...http.userData};
     this.laptopForm = new FormGroup({
       laptop_name: new FormControl(localStorage.getItem('laptopForm') ? this.data.laptop_name : '', [Validators.required, Validators.pattern(/^[a-zA-Z0-9!@#$%^&*()_+]+$/)]),
       laptop_brand_id: new FormControl(localStorage.getItem('laptopForm') ? this.data.laptop_brand_id : '', [Validators.required]),
@@ -43,6 +43,9 @@ export class LaptopFormComponent implements OnInit {
     })
     this.getBrands();
     this.getCpus();
+    if(localStorage.getItem('rel')){
+      this.showPopUp = true;
+    }
   }
 
 
@@ -97,7 +100,13 @@ export class LaptopFormComponent implements OnInit {
     this.formData.append('token','576491d0d598ec6839fddb19fd22c163')
 
     this.isSubmited = false;
-    this.http.postUserInfo(this.formData).subscribe((res) => console.log(res));
+    this.http.postUserInfo(this.formData).subscribe((res) => {
+      console.log(res);
+      this.showPopUp = true;
+      localStorage.clear();
+      localStorage.setItem('rel', 'true')
+    });
   }
+
 
 }

@@ -1,43 +1,93 @@
 @import '../../components/colors.scss';
-.data-detail-section{
+
+.data-detail-section {
     width: 100%;
-    .data-detail-items{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    .data-detail-items {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
         grid-row-gap: 30px;
-        .title{
+        padding: 20px;
+        .title {
             width: 100%;
             text-align: center;
-            h1{
+            h1 {
                 color: $black1;
                 font-size: 34px;
                 font-weight: 700;
             }
         }
-        .user-info{
+        .user-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-column-gap: 30px;
             padding-bottom: 30px;
-            border: 1px solid $grey10;
-            .img{
+            @media screen and (max-width:670px) {
+                grid-template-columns: 1fr;
+            }
+            .img {
                 width: 100%;
                 height: 342px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
             }
-            .info-wrapper{
+            .info-wrapper {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                .info{
+                .info {
+                    width: 100%;
                     margin-top: 20px;
-                    display: flex;
-                    justify-content: flex-start;
-                    h4{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    align-items: center;
+                    h4 {
                         color: $black2;
+                        font-weight: 500;
+                        font-size: 22px;
                     }
-                    p{
+                    p {
+                        width: 100%;
                         color: $grey9;
+                        font-size: 22px;
+                    }
+
+                }
+            }
+        }
+        .laptop-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 30px;
+            border-top: 1px solid $grey10;
+            @media screen and (max-width:670px) {
+                grid-template-columns: 1fr;
+            }
+            .laptop-info-wrapper {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                .info {
+                    width: 100%;
+                    margin-top: 20px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    align-items: center;
+                    h4 {
+                        color: $black2;
+                        font-weight: 500;
+                        font-size: 22px;
+                        width: 100%;
+                    }
+
+                    p {
+                        width: 100%;
+                        color: $grey9;
+                        font-size: 22px;
                     }
                 }
             }
@@ -45,6 +95,6 @@
     }
 }
 
-.bg{
-    max-width: 1100px;
+.bg {
+    max-width: 1120px;
 }

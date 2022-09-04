@@ -1,27 +1,86 @@
-<section class="data-detail-section">
+<section class="data-detail-section" *ngFor="let item of data">
     <div class="container bg">
         <div class="data-detail-items">
-            <div class="tilte">
+            <div class="title">
                 <h1>ლეპტოპის ინფო</h1>
             </div>
             <div class="user-info">
-                <div class="img"></div>
+                <div class="img">
+                    <img src="https://pcfy.redberryinternship.ge/{{item.data.laptop.image}}" alt="">
+                </div>
                 <div class="info-wrapper">
                     <div class="info">
-                        <h4></h4>
-                        <p></p>
+                        <h4>სახელი:</h4>
+                        <p>{{item.data.user.name}}</p>
                     </div>
                     <div class="info">
-                        <h4></h4>
-                        <p></p>
+                        <h4>თიმი:</h4>
+                        <p *ngFor="let team of teams">{{team.data[0].name}}</p>
                     </div>
                     <div class="info">
-                        <h4></h4>
-                        <p></p>
+                        <h4>პოზიცია:</h4>
+                        <p *ngFor="let position of positions">{{position.data[0].name}}</p>
                     </div>
                     <div class="info">
-                        <h4></h4>
-                        <p></p>
+                        <h4>იმეილი:</h4>
+                        <p>{{item.data.user.email}}</p>
+                    </div>
+                    <div class="info">
+                        <h4>ტელ. ნომერი:</h4>
+                        <p>{{item.data.user.phone_number}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="laptop-info">
+                <div class="laptop-info-wrapper">
+                    <div class="info">
+                        <h4>ლეპტოპის სახელი:</h4>
+                        <p>{{item.data.laptop.name}}</p>
+                    </div>
+                    <div class="info">
+                        <h4>ლეპტოპის ბრენდი:</h4>
+                        <p *ngFor="let brand of brands">{{brand.data[0].name}}</p>
+                    </div>
+                    <div class="info">
+                        <h4>RAM:</h4>
+                        <p>{{item.data.laptop.ram}}</p>
+                    </div>
+                    <div class="info">
+                        <h4>მეხსიერების ტიპი:</h4>
+                        <p>{{item.data.laptop.hard_drive_type}}</p>
+                    </div>
+                </div>
+                <div class="laptop-info-wrapper">
+                    <div class="info">
+                        <h4>CPU:</h4>
+                        <p>{{item.data.laptop.cpu.name}}</p>
+                    </div>
+                    <div class="info">
+                        <h4>CPU-ს ბირთვი:</h4>
+                        <p>{{item.data.laptop.cpu.cores}}</p>
+                    </div>
+                    <div class="info">
+                        <h4>CPU-ს ნაკადი:</h4>
+                        <p>{{item.data.laptop.cpu.threads}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="laptop-info">
+                <div class="laptop-info-wrapper">
+                    <div class="info">
+                        <h4>ლეპტოპის მდგომარეობა:</h4>
+                        <p *ngIf="item.data.laptop.state === 'new'">ახალი</p>
+                        <p *ngIf="item.data.laptop.state === 'used'">მეორადი</p>
+                    </div>
+                    <div class="info">
+                        <h4>ლეპტოპის ფასი:</h4>
+                        <p>{{item.data.laptop.price}}</p>
+                    </div>
+                </div>
+                <div class="laptop-info-wrapper">
+                    <div class="info" *ngIf="item.data.laptop.purchase_date">
+                        <h4>შეძენის რიცხვი:</h4>
+                        <p>{{item.data.laptop.purchase_date}}</p>
                     </div>
                 </div>
             </div>

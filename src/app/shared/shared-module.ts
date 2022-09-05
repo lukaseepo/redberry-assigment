@@ -1,3 +1,4 @@
+import { InfoComponent } from './components/info/info.component';
 import { RouterModule } from '@angular/router';
 import { BackButtonComponent } from './components/back-button/back-button.component';
 import { ImageDropzoneComponent } from './components/image-dropzone/image-dropzone.component';
@@ -23,6 +24,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     InputFieldOptionComponent,
     ImageDropzoneComponent,
     BackButtonComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     InputFieldOptionComponent,
     ImageDropzoneComponent,
     BackButtonComponent,
+    InfoComponent
   ]
 })
 export class SharedModule { }

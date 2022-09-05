@@ -27,7 +27,7 @@
         margin-right: 20px;
         align-items: center;
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 700px) {
           &:nth-child(1) {
             display: none;
           }
@@ -46,7 +46,7 @@
           font-size: 20px;
           color: $grey8;
 
-          @media screen and (max-width: 600px) {
+          @media screen and (max-width: 700px) {
             display: block;
           }
         }
@@ -56,7 +56,7 @@
           border-radius: 2px;
           margin-top: 15px;
 
-          @media screen and (max-width:600px) {
+          @media screen and (max-width:700px) {
             display: none;
           }
         }
@@ -115,10 +115,9 @@
           grid-template-columns: 1fr 1fr;
           width: 100%;
           grid-column-gap: 60px;
-
-          @media screen and (max-width: 600px) {
+          @media screen and (max-width: 700px) {
             grid-template-columns: 1fr;
-            grid-row-gap: 30px;
+            grid-row-gap: 10px;
 
             &:nth-child(3) {
               grid-template-columns: 1fr !important;
@@ -129,19 +128,16 @@
             padding-top: 40px;
             border-bottom: 1px solid $grey5;
             padding-bottom: 60px;
-
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 700px) {
               padding-top: 20px;
               padding-bottom: 20px;
               border-bottom: 0px;
             }
           }
-
           &:nth-child(3) {
             padding-top: 40px;
             grid-template-columns: 1fr 1fr 1fr;
-
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 700px) {
               padding-top: 20px;
             }
           }
@@ -150,17 +146,16 @@
             padding-top: 40px;
             border-bottom: 1px solid $grey5;
             padding-bottom: 60px;
-
-            @media screen and (max-width: 600px) {
-              padding-top: 20px;
+            @media screen and (max-width: 700px) {
+              padding-top: 0px !important;
               padding-bottom: 20px;
+              border-bottom: 0px;
             }
           }
 
           &:nth-child(5) {
             padding-top: 40px;
-
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 700px) {
               padding-top: 20px;
             }
           }
@@ -169,7 +164,7 @@
             height: 150px;
             padding-top: 40px;
 
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 700px) {
               padding-top: 20px;
             }
           }
@@ -196,7 +191,7 @@
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width:600px) {
+  @media screen and (max-width:700px) {
     background-color: $white;
   }
 

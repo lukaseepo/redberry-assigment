@@ -20,16 +20,16 @@
       <div class="container">
         <form id="form" [formGroup]="userForm">
           <div class="input-fields">
-            <app-input-field placeHolder="" hint="მინიმუმ 2 სიმბოლო ქართული ასოები" controlName="სახელი" patternText="გამოიყენე ქართული ასოები" [form]="userForm" control="name" [isSubmited]="isSubmited"></app-input-field>
-            <app-input-field placeHolder="" hint="მინიმუმ 2 სიმბოლო ქართული ასოები" controlName="გვარი" patternText="გამოიყენე ქართული ასოები" [form]="userForm" control="surname" [isSubmited]="isSubmited"></app-input-field>
+            <app-input-field placeHolder="" hint="მინიმუმ 2 სიმბოლო ქართული ასოები" controlName="სახელი" patternText="გამოიყენე ქართული ასოები"  control="name" [isSubmited]="isSubmited"></app-input-field>
+            <app-input-field placeHolder="" hint="მინიმუმ 2 სიმბოლო ქართული ასოები" controlName="გვარი" patternText="გამოიყენე ქართული ასოები"  control="surname" [isSubmited]="isSubmited"></app-input-field>
           </div>
-          <app-select [form]="userForm" label="თიმი" control="team_id" [items]="teams"></app-select>
-          <app-select [form]="userForm" label="პოზიცია" control="position_id" [items]="positions"></app-select>
+          <app-select  label="თიმი" control="team_id" [items]="teams"></app-select>
+          <app-select  label="პოზიცია" control="position_id" [items]="positions"></app-select>
           <div class="field-wrapper">
-            <app-input-field placeHolder="" [form]="userForm" hint="უნდა მთავრდებოდეს redberry.ge-ით" controlName="იმეილი" invalidMessage="შეიყვანეთ სწორი იმეილი რომელიც მთავრდება @redberry.ge-ით" control="email" [isSubmited]="isSubmited"></app-input-field>
+            <app-input-field placeHolder=""  hint="უნდა მთავრდებოდეს redberry.ge-ით" controlName="იმეილი" invalidMessage="შეიყვანეთ სწორი იმეილი რომელიც მთავრდება @redberry.ge-ით" control="email" [isSubmited]="isSubmited"></app-input-field>
           </div>
           <div class="field-wrapper">
-            <app-input-field placeHolder="" [form]="userForm" hint="უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას" controlName="ტელეფონის ნომბერი" patternText="უნდა იწყებოდეს +სით და აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას" control="phone_number" [isSubmited]="isSubmited"></app-input-field>
+            <app-input-field placeHolder=""  hint="უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას" controlName="ტელეფონის ნომბერი" patternText="უნდა იწყებოდეს +სით და აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას" control="phone_number" [isSubmited]="isSubmited"></app-input-field>
           </div>
           <div class="submit-wrapper">
             <button (click)="toLaptopFormPage()" type="submit">შემდეგი</button>

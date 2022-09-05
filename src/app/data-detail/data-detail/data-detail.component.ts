@@ -13,6 +13,9 @@ export class DataDetailComponent implements OnInit {
   teams: any = [];
   positions: any = [];
   brands: any = [];
+  teamsExist: boolean;
+  positionsExist: boolean;
+  brandsExist: boolean;
   constructor(
     private route: ActivatedRoute,
     private dataDetailService: DataDetailService
@@ -27,6 +30,10 @@ export class DataDetailComponent implements OnInit {
   getDataById() {
     this.dataDetailService.getDataById(this.id).subscribe((result) => {
       this.data.push(result);
+      console.log(this.data);
+      this.getTeams(this.data[0].data.user.team_id);
+      this.getPositions(this.data[0].data.user.team_id, this.data[0].data.user.position_id);
+      this.getBrands(this.data[0].data.laptop.brand_id);
     });
   }
 
@@ -34,6 +41,7 @@ export class DataDetailComponent implements OnInit {
     this.dataDetailService.getTeams().subscribe((teams) => {
       this.teams.push(teams);
       this.teams[0].data = this.teams[0].data.filter((e) => e.id === id);
+      this.teamsExist = true;
     });
   }
 
@@ -43,6 +51,7 @@ export class DataDetailComponent implements OnInit {
       this.positions[0].data = this.positions[0].data
         .filter((e) => e.team_id === team_id)
         .filter((e) => e.id === position_id);
+      this.positionsExist = true;
     });
   }
 
@@ -52,6 +61,7 @@ export class DataDetailComponent implements OnInit {
       this.brands[0].data = this.brands[0].data.filter(
         (e) => e.id === brand_id
       );
+      this.brandsExist = true;
     });
   }
 }

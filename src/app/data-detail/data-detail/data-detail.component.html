@@ -10,79 +10,33 @@
                     <img src="https://pcfy.redberryinternship.ge/{{item.data.laptop.image}}" alt="">
                 </div>
                 <div class="info-wrapper">
-                    <div class="info">
-                        <h4>სახელი:</h4>
-                        <p>{{item.data.user.name}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>თიმი:</h4>
-                        <p>{{getTeams(item.data.user.team_id)}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>პოზიცია:</h4>
-                        <p>{{getPositions(item.data.user.team_id, item.data.user.position_id)}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>იმეილი:</h4>
-                        <p>{{item.data.user.email}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>ტელ. ნომერი:</h4>
-                        <p>{{item.data.user.phone_number}}</p>
-                    </div>
+                    <app-info name="სახელი:" prop="{{item.data.user.name}}"></app-info>
+                    <app-info name="თიმი:" *ngIf="teamsExist"  prop="{{teams[0].data[0].name}}"></app-info>
+                    <app-info name="პოზიცია:" *ngIf="positionsExist" prop="{{positions[0].data[0].name}}"></app-info>
+                    <app-info name="იმეილი:"  prop="{{item.data.user.email}}"></app-info>
+                    <app-info name="ტელ. ნომერი:"  prop="{{item.data.user.phone_number}}"></app-info>   
                 </div>
             </div>
             <div class="laptop-info">
                 <div class="laptop-info-wrapper">
-                    <div class="info">
-                        <h4>ლეპტოპის სახელი:</h4>
-                        <p>{{item.data.laptop.name}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>ლეპტოპის ბრენდი:</h4>
-                        <p>{{getBrands(item.data.laptop.brand_id)}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>RAM:</h4>
-                        <p>{{item.data.laptop.ram}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>მეხსიერების ტიპი:</h4>
-                        <p>{{item.data.laptop.hard_drive_type}}</p>
-                    </div>
+                    <app-info name="ლეპტოპის სახელი:"  prop="{{item.data.laptop.name}}"></app-info>   
+                    <app-info name="ლეპტოპის ბრენდი:" *ngIf="brandsExist"  prop="{{brands[0].data[0].name}}"></app-info>   
+                    <app-info name="RAM:"  prop="{{item.data.laptop.ram}}"></app-info>   
+                    <app-info name="მეხსიერების ტიპი:"  prop="{{item.data.laptop.hard_drive_type}}"></app-info>   
                 </div>
                 <div class="laptop-info-wrapper">
-                    <div class="info">
-                        <h4>CPU:</h4>
-                        <p>{{item.data.laptop.cpu.name}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>CPU-ს ბირთვი:</h4>
-                        <p>{{item.data.laptop.cpu.cores}}</p>
-                    </div>
-                    <div class="info">
-                        <h4>CPU-ს ნაკადი:</h4>
-                        <p>{{item.data.laptop.cpu.threads}}</p>
-                    </div>
+                    <app-info name="CPU:"  prop="{{item.data.laptop.cpu.name}}"></app-info>   
+                    <app-info name="CPU-ს ბირთვი:"  prop="{{item.data.laptop.cpu.cores}}"></app-info>   
+                    <app-info name="CPU-ს ნაკადი:"  prop="{{item.data.laptop.cpu.threads}}"></app-info>   
                 </div>
             </div>
             <div class="laptop-info">
                 <div class="laptop-info-wrapper">
-                    <div class="info">
-                        <h4>ლეპტოპის მდგომარეობა:</h4>
-                        <p *ngIf="item.data.laptop.state === 'new'">ახალი</p>
-                        <p *ngIf="item.data.laptop.state === 'used'">მეორადი</p>
-                    </div>
-                    <div class="info">
-                        <h4>ლეპტოპის ფასი:</h4>
-                        <p>{{item.data.laptop.price}}</p>
-                    </div>
+                    <app-info name="ლეპტოპის მდგომარეობა:"  prop="{{item.data.laptop.state === 'new' ? 'ახალი' : 'მეორადი'}}"></app-info>   
+                    <app-info name="ლეპტოპის ფასი:"  prop="{{item.data.laptop.price}}"></app-info>   
                 </div>
                 <div class="laptop-info-wrapper">
-                    <div class="info" *ngIf="item.data.laptop.purchase_date">
-                        <h4>შეძენის რიცხვი:</h4>
-                        <p>{{item.data.laptop.purchase_date}}</p>
-                    </div>
+                    <app-info name="შეძენის რიცხვი:" *ngIf="item.data.laptop.purchase_date"  prop="{{item.data.laptop.purchase_date}}"></app-info>   
                 </div>
             </div>
         </div>

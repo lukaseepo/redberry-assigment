@@ -19,24 +19,24 @@
                 <form [formGroup]="laptopForm">
                     <app-image-dropzone (onchange)="onSelect($event)" [math]="math" [uploaded]="uploaded" [files]="files" [isSubmited]="isSubmited"></app-image-dropzone>
                     <div class="input-fields">
-                        <app-input-field placeHolder="" patternText="გამოიყენე ლათინური ასოები, ციფრები ან !@#$%^&*()-_+="  top="true" controlName="ლეპტპოპის სახელი" control="laptop_name" hint="ლათინური ასოები, ციფრები, !@#$%^&*()_+=" [form]="laptopForm" [isSubmited]="isSubmited"></app-input-field>
-                        <app-select control="laptop_brand_id" [items]="brands" label="ბრენდი" [form]="laptopForm"></app-select>
+                        <app-input-field placeHolder="" patternText="გამოიყენე ლათინური ასოები, ციფრები ან !@#$%^&*()-_+="  top="true" controlName="ლეპტპოპის სახელი" control="laptop_name" hint="ლათინური ასოები, ციფრები, !@#$%^&*()_+=" [isSubmited]="isSubmited"></app-input-field>
+                        <app-select control="laptop_brand_id" [items]="brands" label="ბრენდი"></app-select>
                     </div>
                     <div class="input-fields">
-                        <app-select control="laptop_cpu" [items]="cpus" label="CPU" [form]="laptopForm"></app-select>
-                        <app-input-field placeHolder="" patternText="გამოიყენე მხოლოდ ციფრები"  top="true" controlName="CPU-ს ბირთვი" control="laptop_cpu_cores" hint="მხოლოდ ციფრები" [form]="laptopForm" [isSubmited]="isSubmited"></app-input-field>
-                        <app-input-field placeHolder="" patternText="გამოიყენე მხოლოდ ციფრები"  top="true" controlName="CPU-ს ნაკადი" control="laptop_cpu_threads" hint="მხოლოდ ციფრები" [form]="laptopForm" [isSubmited]="isSubmited"></app-input-field>
+                        <app-select control="laptop_cpu" [items]="cpus" label="CPU"></app-select>
+                        <app-input-field placeHolder="" patternText="გამოიყენე მხოლოდ ციფრები"  top="true" controlName="CPU-ს ბირთვი" control="laptop_cpu_cores" hint="მხოლოდ ციფრები" [isSubmited]="isSubmited"></app-input-field>
+                        <app-input-field placeHolder="" patternText="გამოიყენე მხოლოდ ციფრები"  top="true" controlName="CPU-ს ნაკადი" control="laptop_cpu_threads" hint="მხოლოდ ციფრები" [isSubmited]="isSubmited"></app-input-field>
                     </div>
                     <div class="input-fields">
-                        <app-input-field placeHolder="" patternText="გამოიყენე მხოლოდ ციფრები"  top="true" controlName="ლეპტოპის RAM (GB)" control="laptop_ram" hint="მხოლოდ ციფრები" [form]="laptopForm" [isSubmited]="isSubmited"></app-input-field>
-                        <app-input-field-option optionOne="SSD" optionTwo="HDD"  [isSubmited]="isSubmited" control="laptop_hard_drive_type" controlName="მეხსიერების ტიპი" option="laptop_hard_drive_type" [form]="laptopForm"></app-input-field-option>
+                        <app-input-field placeHolder="" patternText="გამოიყენე მხოლოდ ციფრები"  top="true" controlName="ლეპტოპის RAM (GB)" control="laptop_ram" hint="მხოლოდ ციფრები" [isSubmited]="isSubmited"></app-input-field>
+                        <app-input-field-option optionOne="SSD" optionTwo="HDD"  [isSubmited]="isSubmited" control="laptop_hard_drive_type" controlName="მეხსიერების ტიპი" option="laptop_hard_drive_type"></app-input-field-option>
                     </div>
                     <div class="input-fields">
-                        <app-input-field placeHolder="დდ/თთ/წწწწ" patternText="ჩაწერე სწორი თარიღი"  top="true" controlName="შეძენის რიცხვი (არჩევითი)" control="laptop_purchase_date" hint="ლათინური ასოები, ციფრები, !@#$%^&*()_+=" [form]="laptopForm" [isSubmited]="isSubmited"></app-input-field>
-                        <app-input-field placeHolder="" patternText="ჩაწერეთ სწორი რიცხვი"  top="true" controlName="ფასი" control="laptop_price" hint="მხოლოდ ციფრები" [form]="laptopForm" [isSubmited]="isSubmited"></app-input-field>
+                        <app-input-field placeHolder="დდ/თთ/წწწწ" patternText="ჩაწერე სწორი თარიღი"  top="true" controlName="შეძენის რიცხვი (არჩევითი)" control="laptop_purchase_date" hint="ლათინური ასოები, ციფრები, !@#$%^&*()_+=" [isSubmited]="isSubmited"></app-input-field>
+                        <app-input-field placeHolder="" patternText="ჩაწერეთ სწორი რიცხვი"  top="true" controlName="ფასი" control="laptop_price" hint="მხოლოდ ციფრები" [isSubmited]="isSubmited"></app-input-field>
                     </div>
                     <div class="input-fields">
-                        <app-input-field-option optionOne="new" optionTwo="used"  [isSubmited]="isSubmited" control="laptop_state" controlName="ლეპტოპის მდგომარეობა" option="laptop_hard_drive_type" [form]="laptopForm"></app-input-field-option>
+                        <app-input-field-option optionOne="new" optionTwo="used"  [isSubmited]="isSubmited" control="laptop_state" controlName="ლეპტოპის მდგომარეობა" option="laptop_hard_drive_type"></app-input-field-option>
                     </div>
                     <div class="laptop-submit-wrapper">
                         <div class="submit-wrapper-items">

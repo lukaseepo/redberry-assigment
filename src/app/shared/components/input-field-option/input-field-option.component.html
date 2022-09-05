@@ -1,4 +1,4 @@
-<div [formGroup]="form" class="input-field top">
+<div class="input-field top">
     <ng-template #validHardDrive><label>{{controlName}}</label></ng-template>
     <div class="validation"
         *ngIf="getValue(control).invalid && isSubmited;else validHardDrive">

@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOptionModule} from "@angular/material/core";
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { InfoComponent } from './shared/components/info/info.component';
 
 
 

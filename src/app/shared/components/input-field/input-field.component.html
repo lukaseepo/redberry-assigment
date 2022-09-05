@@ -1,4 +1,4 @@
-<div class="input-field" [ngClass]="{'top': top === 'true'}" [formGroup]="form">
+<div class="input-field" [ngClass]="{'top': top === 'true'}">
     <label
         [className]="getValue(control).invalid && (getValue(control).touched || getValue(control).dirty) || isSubmited && getValue(control).invalid ? 'invalid' : 'norm'">{{controlName}}</label>
     <input [placeholder]="placeHolder"

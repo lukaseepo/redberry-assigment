@@ -1,0 +1,18 @@
+.footer-section {
+    width: 100%;
+    display: flex;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+
+    .logo {
+        width: 85px;
+        height: 85px;
+        background-image: url('/assets/img/logo2.png');
+        background-size: cover;
+    }
+}

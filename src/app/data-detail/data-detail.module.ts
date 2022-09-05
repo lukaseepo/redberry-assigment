@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DataDetailRoutingModule } from './data-detail-routing.module';
 import { DataDetailComponent } from './data-detail/data-detail.component';
+import { SharedModule } from '../shared/shared-module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { DataDetailComponent } from './data-detail/data-detail.component';
   ],
   imports: [
     CommonModule,
-    DataDetailRoutingModule
+    DataDetailRoutingModule,
+    SharedModule
   ]
 })
 export class DataDetailModule { }

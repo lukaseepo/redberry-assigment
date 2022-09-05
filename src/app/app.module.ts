@@ -11,6 +11,7 @@ import {MatOptionModule} from "@angular/material/core";
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     HttpClientModule,
     MatFormFieldModule,
     MatOptionModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
-<section class="info-section">
+<section class="info-section" *ngIf="dataExists;else err">
+    <app-back-button [link]="['/home']"></app-back-button>
     <div class="container bg">
         <div class="info-items">
             <div class="title">
@@ -21,3 +22,9 @@
         </div>
     </div>
 </section>
+
+<ng-template #err>
+    <app-back-button [link]="['/home']"></app-back-button>
+    <h1 class="error">ჯერ არავინ არ დარეგისტრირებულა
+    </h1>
+</ng-template>

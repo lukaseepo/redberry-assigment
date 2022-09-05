@@ -1,0 +1,23 @@
+@import '/src/styles/colors.scss';
+.circle{
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    background-color: $grey11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    cursor: pointer;
+    @media screen and (max-width:730px) {
+        background-color: transparent;
+        top: 45px;
+        left: 2px;
+    }
+    i{
+        font-size: 16px;
+        color: $black2;
+    }
+}

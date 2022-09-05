@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'user-form',
-    loadChildren: () => import('./user-form/forms.module').then(m => m.FormsModule)
+    loadChildren: () => import('./user-form/user-forms.module').then(m => m.FormsModule)
   },
   {
     path: 'laptop-form',

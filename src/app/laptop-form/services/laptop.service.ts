@@ -17,7 +17,6 @@ export class LaptopService {
   }
 
   postUserInfo(userInfo: any){
-    const headers = { 'content-type': 'multipart/formdata'}
     const body = userInfo;
     return this.http.post(`${environment.apiKey}laptop/create/`, body);
   }

@@ -10,7 +10,7 @@ import { LaptopService } from 'src/app/laptop-form/services/laptop.service';
 @Component({
   selector: 'app-information-processing',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  styleUrls: ['./user-form.component.scss'],
 })
 
 
@@ -28,7 +28,6 @@ export class UserFormComponent implements OnInit {
         position_id: new FormControl(localStorage.getItem('userObj') ? this.data.position_id : '', [Validators.required]),
         email: new FormControl(localStorage.getItem('userObj') ? this.data.email : '', [Validators.required, Validators.email, ValidateEmail]),
         phone_number: new FormControl(localStorage.getItem('userObj') ? this.data.phone_number : '', [Validators.required,   Validators.pattern('^((\\+995-?))?[0-9]{9}$')]),
-     
      });
 
      if(localStorage.getItem('userObj') && this.data.team_id !== ''){

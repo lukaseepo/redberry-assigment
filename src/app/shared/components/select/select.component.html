@@ -1,0 +1,11 @@
+<div [formGroup]="form" class="select-wrapper">
+    <i class="fa-solid fa-angle-down"></i>
+    <mat-form-field appearance="fill">
+        <mat-label>{{label}}</mat-label>
+        <mat-select [formControlName]="control" [disableOptionCentering]="true">
+            <mat-option *ngFor="let item of items.data" [value]="control === 'laptop_cpu' ? item.name : item.id">
+                {{item.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

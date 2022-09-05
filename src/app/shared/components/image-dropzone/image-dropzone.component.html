@@ -1,0 +1,45 @@
+<div class="upload">
+    <div class="custom-dropzone background-inv" *ngIf="isSubmited && files.length === 0"
+        ngx-dropzone [accept]="'image/*'" [multiple]="false" (change)="onSelect($event)">
+        <ngx-dropzone-label>
+            <div class="upload-items">
+                <img src="../../../../assets/img/VectorInvliad.png" width="38" height="34" alt="">
+                <h2 class="invalid">ჩააგდე ან ატვირთე <br> ლეპტოპის ფოტო</h2>
+                <button type="button">ატვირთე</button>
+            </div>
+        </ngx-dropzone-label>
+        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+            [file]="f"></ngx-dropzone-image-preview>
+    </div>
+    <div *ngIf="files.length === 0 && !isSubmited || files.length === 1" class="custom-dropzone"
+        ngx-dropzone [accept]="'image/*'" [multiple]="false" (change)="onSelect($event)">
+        <ngx-dropzone-label>
+            <div class="upload-items">
+                <h2>ჩააგდე ან ატვირთე <br> ლეპტოპის ფოტო</h2>
+                <button>ატვირთე</button>
+            </div>
+        </ngx-dropzone-label>
+        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+            [file]="f"></ngx-dropzone-image-preview>
+    </div>
+    <div *ngIf="uploaded" class="laptop-image-uploader-wrapper">
+        <div class="laptop-image-uploader-items">
+            <div class="laptop-image-info">
+                <img src="/assets/img/VectorValid.png" width="38" height="34" alt="">
+                <div class="wrap">
+                    <span>
+                        {{files[0].name}}
+                    </span>
+                    <span>{{math.round(0.01 * (files[0].size * 0.00098)) === 0 ? 0 : math.round(0.01
+                        * (files[0].size * 0.00098))}} mb</span>
+                </div>
+            </div>
+            <div class="custom-dropzone-uploader" ngx-dropzone [accept]="'image/*'"
+                [multiple]="false" (change)="onSelect($event)">
+                <button class="uploader">
+                    თავიდან ატვირთე
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

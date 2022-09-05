@@ -1,0 +1,23 @@
+<div class="input-field" [ngClass]="{'top': top === 'true'}" [formGroup]="form">
+    <label
+        [className]="getValue(control).invalid && (getValue(control).touched || getValue(control).dirty) || isSubmited && getValue(control).invalid ? 'invalid' : 'norm'">{{controlName}}</label>
+    <input [placeholder]="placeHolder"
+        [className]="getValue(control).invalid && (getValue(control).touched || getValue(control).dirty) || isSubmited && getValue(control).invalid ? 'invalid-border' : ''"
+        [formControlName]="control" type="text">
+    <ng-template #valid><span>{{hint}}</span></ng-template>
+    <div class="validation"
+        *ngIf="getValue(control).invalid && (getValue(control).touched || getValue(control).dirty) || isSubmited && getValue(control).invalid; else valid">
+        <div *ngIf="getValue(control).errors?.['required']">
+            აუცილებელია იყოს შევსებული
+        </div>
+        <div *ngIf="getValue(control).errors?.['pattern']">
+            {{patternText}}
+        </div>
+        <div *ngIf="getValue(control).errors?.['minlength']">
+            მინიმუმ 2 ასო გამოიყენეთ
+        </div>
+        <div *ngIf="getValue(control).invalid">
+            {{invalidMessage}}
+        </div>
+    </div>
+</div>

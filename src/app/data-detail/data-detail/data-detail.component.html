@@ -1,4 +1,5 @@
 <section class="data-detail-section" *ngFor="let item of data">
+    <app-back-button [link]="['/data-list']"></app-back-button>
     <div class="container bg">
         <div class="data-detail-items">
             <div class="title">
@@ -15,11 +16,11 @@
                     </div>
                     <div class="info">
                         <h4>თიმი:</h4>
-                        <p *ngFor="let team of teams">{{team.data[0].name}}</p>
+                        <p>{{getTeams(item.data.user.team_id)}}</p>
                     </div>
                     <div class="info">
                         <h4>პოზიცია:</h4>
-                        <p *ngFor="let position of positions">{{position.data[0].name}}</p>
+                        <p>{{getPositions(item.data.user.team_id, item.data.user.position_id)}}</p>
                     </div>
                     <div class="info">
                         <h4>იმეილი:</h4>
@@ -39,7 +40,7 @@
                     </div>
                     <div class="info">
                         <h4>ლეპტოპის ბრენდი:</h4>
-                        <p *ngFor="let brand of brands">{{brand.data[0].name}}</p>
+                        <p>{{getBrands(item.data.laptop.brand_id)}}</p>
                     </div>
                     <div class="info">
                         <h4>RAM:</h4>

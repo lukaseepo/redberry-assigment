@@ -1,0 +1,108 @@
+@import '/src/styles/colors.scss';
+
+.select-wrapper {
+    position: relative;
+    margin-top: 53px;
+    i {
+        font-size: 14px;
+        color: $black1;
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        z-index: 100;
+    }
+    ::ng-deep {
+        .mat-form-field-underline {
+            width: 0;
+        }
+        mat-form-field {
+            width: 100%;
+
+            .mat-form-field-flex {
+                background-color: $grey2;
+                height: 60px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                padding-left: 25px;
+                padding-right: 16px;
+                appearance: none;
+                width: 100%;
+                color: $black1;
+                font-size: 18px;
+                font-weight: 500;
+
+                .mat-option {
+                    background-color: $white;
+                    color: $black1;
+                    font-size: 18px;
+
+                    &:hover {
+                        background-color: $grey3;
+                    }
+                }
+            }
+        }
+
+        .mat-select-arrow {
+            opacity: 0
+        }
+    }
+}
+
+::ng-deep {
+    .mat-form-field-label {
+        color: $black1;
+    }
+
+    .mat-select-panel {
+        width: 100%;
+        height: max-content;
+        position: relative;
+        right: 5px;
+        top: 30px;
+    }
+
+    .mat-form-field-required-marker {
+        opacity: 0;
+    }
+
+    .mat-form-field.ng-invalid {
+        .mat-form-field-label {
+            color: $black1;
+        }
+    }
+
+    .mat-form-field.ng-invalid.ng-touched {
+        .mat-form-field-flex {
+            border: 1.8px solid $red;
+        }
+
+        .mat-form-field-label {
+            color: $black1;
+        }
+    }
+
+    .mat-form-field.mat-focused .mat-form-field-label {
+        color: $black1;
+    }
+
+    .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+        color: $black1;
+        background-color: $grey3;
+    }
+
+    .mat-option:hover:not(.mat-option-disabled),
+    .mat-option:focus:not(.mat-option-disabled) {
+        background-color: $grey3;
+    }
+
+    .mat-option.mat-active {
+        background-color: transparent;
+        overflow-y: hidden;
+    }
+
+    .mat-select-panel {
+        background: $white;
+    }
+}

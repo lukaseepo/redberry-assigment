@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-laptop-form',
   templateUrl: './laptop-form.component.html',
-  styleUrls: ['./laptop-form.component.scss']
+  styleUrls: ['./laptop-form.component.scss'],
 })
 export class LaptopFormComponent implements OnInit {
   laptopForm: FormGroup;
@@ -80,24 +80,13 @@ export class LaptopFormComponent implements OnInit {
       scroll(0,0)
       return;
     }
-    this.formData.append('name', this.userData.name)
-    this.formData.append('surname', this.userData.surname)
-    this.formData.append('email', this.userData.email)
-    this.formData.append('position_id', this.userData.position_id)
-    this.formData.append('team_id', this.userData.team_id,)
-    this.formData.append('phone_number', this.userData.phone_number)
+    
+    for(let key in {...this.userData, ...this.laptopForm.value}){
+      this.formData.append(key, {...this.userData, ...this.laptopForm.value}[key]);
+    }
+
     this.formData.append('laptop_image', this.imgFile[0])
-    this.formData.append('laptop_name', this.laptopForm.get('laptop_name').value)
-    this.formData.append('laptop_brand_id',this.laptopForm.get('laptop_brand_id').value)
-    this.formData.append('laptop_cpu',this.laptopForm.get('laptop_cpu').value)
-    this.formData.append('laptop_cpu_cores',this.laptopForm.get('laptop_cpu_cores').value)
-    this.formData.append('laptop_cpu_threads',this.laptopForm.get('laptop_cpu_threads').value)
-    this.formData.append('laptop_ram',this.laptopForm.get('laptop_ram').value)
-    this.formData.append('laptop_hard_drive_type',this.laptopForm.get('laptop_hard_drive_type').value)
-    this.formData.append('laptop_purchase_date',this.laptopForm.get('laptop_purchase_date').value)
-    this.formData.append('laptop_state',this.laptopForm.get('laptop_state').value)
-    this.formData.append('laptop_price',this.laptopForm.get('laptop_price').value)
-    this.formData.append('token','576491d0d598ec6839fddb19fd22c163')
+    this.formData.append('token','742a6c57a539e7d55197350ef331f342')
 
     this.isSubmited = false;
     this.http.postUserInfo(this.formData).subscribe((res) => {

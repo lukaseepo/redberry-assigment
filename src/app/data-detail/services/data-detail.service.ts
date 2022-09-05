@@ -11,7 +11,7 @@ export class DataDetailService {
   constructor(private http: HttpClient) { }
 
   getDataById(id:number){
-    return this.http.get(`${environment.apiKey}laptop/${id}?token=576491d0d598ec6839fddb19fd22c163
+    return this.http.get(`${environment.apiKey}laptop/${id}?token=742a6c57a539e7d55197350ef331f342
     `)
   }
 

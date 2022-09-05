@@ -10,7 +10,7 @@ export class DataListService {
   constructor(private http: HttpClient) { }
 
   getAllLaptops(){
-    return this.http.get(`${environment.apiKey}laptops?token=576491d0d598ec6839fddb19fd22c163`);
+    return this.http.get(`${environment.apiKey}laptops?token=742a6c57a539e7d55197350ef331f342`);
   }
 
 }

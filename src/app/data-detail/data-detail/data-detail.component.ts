@@ -1,5 +1,5 @@
 import { DataDetailService } from './../services/data-detail.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -19,6 +19,7 @@ export class DataDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    localStorage.removeItem('rel');
     this.id = this.route.snapshot.params['id'];
     this.getDataById();
   }
@@ -26,13 +27,6 @@ export class DataDetailComponent implements OnInit {
   getDataById() {
     this.dataDetailService.getDataById(this.id).subscribe((result) => {
       this.data.push(result);
-      console.log(result);
-      this.getTeams(this.data[0].data.user.team_id);
-      this.getPositions(
-        this.data[0].data.user.team_id,
-        this.data[0].data.user.position_id
-      );
-      this.getBrands(this.data[0].data.laptop.brand_id);
     });
   }
 

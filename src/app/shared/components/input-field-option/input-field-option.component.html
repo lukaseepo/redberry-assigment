@@ -1,0 +1,21 @@
+<div [formGroup]="form" class="input-field top">
+    <ng-template #validHardDrive><label>{{controlName}}</label></ng-template>
+    <div class="validation"
+        *ngIf="getValue(control).invalid && isSubmited;else validHardDrive">
+        <div *ngIf="getValue(control).errors?.['required']">
+             {{controlName}} <img src="../../../../assets/img/VectorInvliad.png" width="23" height="20" alt="">
+        </div>
+    </div>
+    <div class="options">
+        <div class="option">
+            <input [formControlName]="control" type="radio"
+                [name]="control" [value]="optionOne">
+            <label>{{optionOne === 'new' ? 'ახალი' : optionOne}}</label>
+        </div>
+        <div class="option">
+            <input [formControlName]="control" type="radio"
+                [name]="control" [value]="optionTwo">
+            <label>{{optionTwo === 'used' ? 'მეორადი' : optionTwo}}</label>
+        </div>
+    </div>
+</div>

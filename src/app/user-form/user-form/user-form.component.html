@@ -1,4 +1,5 @@
 <section class="form-section">
+  <app-back-button [link]="['/home']"></app-back-button>
   <div class="form-items">
     <div class="tabs">
       <div class="tab">
@@ -19,105 +20,16 @@
       <div class="container">
         <form id="form" [formGroup]="userForm">
           <div class="input-fields">
-            <div class="input-field">
-              <label
-                [className]="userForm.get('name').invalid && (userForm.get('name').touched || userForm.get('name').dirty) || isSubmited && userForm.get('name').invalid ? 'invalid' : 'norm'">სახელი</label>
-              <input [className]="userForm.get('name').invalid && (userForm.get('name').touched || userForm.get('name').dirty) || isSubmited && userForm.get('name').invalid ? 'invalid-border' : ''" formControlName="name" type="text" value="">
-              <ng-template #valid><span>მინიმუმ 2 სიმბოლო ქართული ასოები</span></ng-template>
-              <div class="validation"
-                *ngIf="userForm.get('name').invalid && (userForm.get('name').touched || userForm.get('name').dirty) || isSubmited && userForm.get('name').invalid; else valid">
-                <div *ngIf="userForm.get('name').errors?.['required']">
-                  აუცილებელია იყოს შევსებული
-                </div>
-                <div *ngIf="userForm.get('name').errors?.['pattern']">
-                  გამოიყენე ქართული ასოები
-                </div>
-                <div *ngIf="userForm.get('name').errors?.['minlength']">
-                  მინიმუმ 2 ასო გამოიყენეთ
-                </div>
-              </div>
-            </div>
-            <div class="input-field">
-              <label
-                [className]="userForm.get('surname').invalid && (userForm.get('surname').touched || userForm.get('surname').dirty) || isSubmited && userForm.get('surname').invalid ? 'invalid' : 'norm'">გვარი</label>
-              <input [className]="userForm.get('surname').invalid && (userForm.get('surname').touched || userForm.get('surname').dirty) || isSubmited && userForm.get('surname').invalid ? 'invalid-border' : ''" formControlName="surname" type="text">
-              <ng-template #valid>
-                <span>მინიმუმ 2 სიმბოლო ქართული ასოები</span>
-              </ng-template>
-              <div class="validation"
-                *ngIf="userForm.get('surname').invalid && (userForm.get('surname').touched || userForm.get('surname').dirty) || isSubmited && userForm.get('surname').invalid; else valid">
-                <div *ngIf="userForm.get('surname').errors?.['required']">
-                  აუცილებელია იყოს შევსებული
-                </div>
-                <div *ngIf="userForm.get('surname').errors?.['pattern']">
-                  გამოიყენე ქართული ასოები
-                </div>
-                <div *ngIf="userForm.get('surname').errors?.['minlength']">
-                  მინიმუმ 2 ასო გამოიყენეთ
-                </div>
-              </div>
-            </div>
+            <app-input-field placeHolder="" hint="მინიმუმ 2 სიმბოლო ქართული ასოები" controlName="სახელი" patternText="გამოიყენე ქართული ასოები" [form]="userForm" control="name" [isSubmited]="isSubmited"></app-input-field>
+            <app-input-field placeHolder="" hint="მინიმუმ 2 სიმბოლო ქართული ასოები" controlName="გვარი" patternText="გამოიყენე ქართული ასოები" [form]="userForm" control="surname" [isSubmited]="isSubmited"></app-input-field>
           </div>
-          <div class="select-wrapper">
-            <i class="fa-solid fa-angle-down"></i>
-            <mat-form-field appearance="fill">
-              <mat-label>თიმი</mat-label>
-              <mat-select formControlName="team_id" [disableOptionCentering]="true">
-                <mat-option *ngFor="let team of teams.data" [value]="team.id">
-                  {{team.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="select-wrapper">
-            <i class="fa-solid fa-angle-down"></i>
-            <mat-form-field appearance="fill">
-              <mat-label>პოზიცია</mat-label>
-              <mat-select formControlName="position_id" [disableOptionCentering]="true">
-                <mat-option *ngFor="let position of positions.data" [value]="position.id">
-                  {{position.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+          <app-select [form]="userForm" label="თიმი" control="team_id" [items]="teams"></app-select>
+          <app-select [form]="userForm" label="პოზიცია" control="position_id" [items]="positions"></app-select>
+          <div class="field-wrapper">
+            <app-input-field placeHolder="" [form]="userForm" hint="უნდა მთავრდებოდეს redberry.ge-ით" controlName="იმეილი" invalidMessage="შეიყვანეთ სწორი იმეილი რომელიც მთავრდება @redberry.ge-ით" control="email" [isSubmited]="isSubmited"></app-input-field>
           </div>
           <div class="field-wrapper">
-            <div class="input-field">
-              <label
-                [className]="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty) || isSubmited && userForm.get('email').invalid? 'invalid' : 'norm'">მეილი</label>
-              <input [className]="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty) || isSubmited && userForm.get('email').invalid ? 'invalid-border' : ''" formControlName="email" type="text">
-              <ng-template #validemail>
-                <span>უნდა მთავრდებოდეს @redberry.ge-ით</span>
-              </ng-template>
-              <div class="validation"
-                *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty) || isSubmited && userForm.get('email').invalid;else validemail">
-                <div *ngIf="userForm.get('email').errors?.['required']">
-                  აუცილებელია იყოს შევსებული
-                </div>
-                <div *ngIf="userForm.get('email').invalid">
-                  შეიყვანეთ სწორი იმეილი რომელიც მთავრდება @redberry.ge-ით
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="field-wrapper">
-            <div class="input-field">
-              <label
-                [className]="userForm.get('phone_number').invalid && (userForm.get('phone_number').touched || userForm.get('phone_number').dirty) || isSubmited && userForm.get('phone_number').invalid  ? 'invalid' : 'norm'">ტელეფონის
-                ნომერი</label>
-              <input [className]="userForm.get('phone_number').invalid && (userForm.get('phone_number').touched || userForm.get('phone_number').dirty) || isSubmited && userForm.get('phone_number').invalid ? 'invalid-border' : ''" formControlName="phone_number" type="text">
-              <ng-template #validPhoneNumber>
-                <span>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას</span>
-              </ng-template>
-              <div class="validation"
-                *ngIf="userForm.get('phone_number').invalid && (userForm.get('phone_number').touched || userForm.get('phone_number').dirty) || isSubmited && userForm.get('phone_number').invalid;else validPhoneNumber">
-                <div *ngIf="userForm.get('phone_number').errors?.['required']">
-                  აუცილებელია იყოს შევსებული
-                </div>
-                <div *ngIf="userForm.get('phone_number').errors?.['pattern']">
-                  უნდა იწყებოდეს +სით და აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას
-                </div>
-              </div>
-            </div>
+            <app-input-field placeHolder="" [form]="userForm" hint="უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას" controlName="ტელეფონის ნომბერი" patternText="უნდა იწყებოდეს +სით და აკმაყოფილებდეს ქართული მობ-ნომრის ბაზას" control="phone_number" [isSubmited]="isSubmited"></app-input-field>
           </div>
           <div class="submit-wrapper">
             <button (click)="toLaptopFormPage()" type="submit">შემდეგი</button>
@@ -126,7 +38,5 @@
       </div>
     </div>
   </div>
-  <footer class="footer-section">
-    <div class="logo"></div>
-  </footer>
+  <app-footer></app-footer>
 </section>

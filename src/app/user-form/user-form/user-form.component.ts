@@ -27,7 +27,7 @@ export class UserFormComponent implements OnInit {
         team_id: new FormControl(localStorage.getItem('userObj') ? this.data.team_id : '', [Validators.required]),
         position_id: new FormControl(localStorage.getItem('userObj') ? this.data.position_id : '', [Validators.required]),
         email: new FormControl(localStorage.getItem('userObj') ? this.data.email : '', [Validators.required, Validators.email, ValidateEmail]),
-        phone_number: new FormControl(localStorage.getItem('userObj') ? this.data.phone_number : '', [Validators.required,   Validators.pattern('^((\\+995-?))?[0-9]{9}$')]),
+        phone_number: new FormControl(localStorage.getItem('userObj') ? this.data.phone_number : '', [Validators.required,   Validators.pattern('^((\\+995-?))[0-9]{9}$')]),
      });
 
      if(localStorage.getItem('userObj') && this.data.team_id !== ''){
